@@ -1,5 +1,4 @@
 using System;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Bromo_Airlines
@@ -45,58 +44,35 @@ namespace Bromo_Airlines
                 return;
             }
 
-            // Cari akun di tabel Akun (pakai parameter supaya aman)
-            try
+            // Cari akun di data dummy (List di memori)
+            Akun akunKetemu = DataDummy.CariAkun(username, password);
+
+            // Kalau tidak ketemu, berarti login gagal
+            if (akunKetemu == null)
             {
-                SqlConnection koneksi = new SqlConnection(Koneksi.connectionString);
-                koneksi.Open();
-
-                string query = "SELECT ID, Username, Nama, MerupakanAdmin FROM Akun " +
-                               "WHERE Username = @username AND Password = @password";
-
-                SqlCommand perintah = new SqlCommand(query, koneksi);
-                perintah.Parameters.AddWithValue("@username", username);
-                perintah.Parameters.AddWithValue("@password", password);
-
-                SqlDataReader pembaca = perintah.ExecuteReader();
-
-                // Kalau tidak ada baris yang cocok, berarti login gagal
-                if (pembaca.Read() == false)
-                {
-                    pembaca.Close();
-                    koneksi.Close();
-                    MessageBox.Show("Username atau password salah", "Login Gagal",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                // Simpan data akun ke SesiLogin
-                SesiLogin.idAkun = Convert.ToInt32(pembaca["ID"]);
-                SesiLogin.username = pembaca["Username"].ToString();
-                SesiLogin.nama = pembaca["Nama"].ToString();
-                SesiLogin.merupakanAdmin = Convert.ToBoolean(pembaca["MerupakanAdmin"]);
-
-                pembaca.Close();
-                koneksi.Close();
-
-                // Buka form sesuai peran (Admin atau Customer)
-                if (SesiLogin.merupakanAdmin == true)
-                {
-                    AdminMainForm formAdmin = new AdminMainForm();
-                    this.Hide();
-                    formAdmin.Show();
-                }
-                else
-                {
-                    CustomerMainForm formCustomer = new CustomerMainForm();
-                    this.Hide();
-                    formCustomer.Show();
-                }
+                MessageBox.Show("Username atau password salah", "Login Gagal",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            catch (Exception ex)
+
+            // Simpan data akun ke SesiLogin
+            SesiLogin.idAkun = akunKetemu.ID;
+            SesiLogin.username = akunKetemu.Username;
+            SesiLogin.nama = akunKetemu.Nama;
+            SesiLogin.merupakanAdmin = akunKetemu.MerupakanAdmin;
+
+            // Buka form sesuai peran (Admin atau Customer)
+            if (SesiLogin.merupakanAdmin == true)
             {
-                MessageBox.Show("Gagal membaca data database: " + ex.Message,
-                    "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AdminMainForm formAdmin = new AdminMainForm();
+                this.Hide();
+                formAdmin.Show();
+            }
+            else
+            {
+                CustomerMainForm formCustomer = new CustomerMainForm();
+                this.Hide();
+                formCustomer.Show();
             }
         }
 

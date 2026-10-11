@@ -1,0 +1,42 @@
+# =====================================================================
+# Gitignore untuk proyek Bromo Airlines (Visual Studio / .NET Framework)
+# =====================================================================
+
+# Hasil build
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+[Bb]uild/
+
+# Folder dan file IDE Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.rsuser
+
+# File hasil kompilasi / cache
+*.cache
+*.dll
+*.exe
+*.pdb
+*.ilk
+*.exp
+*.idb
+*.ipdb
+*.iobj
+*.log
+
+# Hasil test
+[Tt]est[Rr]esult*/
+*.trx
+
+# Rider / VS Code (kalau dipakai)
+.idea/
+.vscode/
+
+# File Windows
+Thumbs.db
+Desktop.ini

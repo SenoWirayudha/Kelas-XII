@@ -1,5 +1,4 @@
 using System;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Bromo_Airlines
@@ -61,31 +60,12 @@ namespace Bromo_Airlines
                 return;
             }
 
-            // Validasi 2: username harus unik (dicek ke database)
-            try
+            // Validasi 2: username harus unik (dicek ke data dummy)
+            if (DataDummy.UsernameSudahDipakai(username))
             {
-                SqlConnection koneksi = new SqlConnection(Koneksi.connectionString);
-                koneksi.Open();
-
-                SqlCommand perintah = new SqlCommand(
-                    "SELECT COUNT(*) FROM Akun WHERE Username = @username", koneksi);
-                perintah.Parameters.AddWithValue("@username", username);
-
-                int jumlah = Convert.ToInt32(perintah.ExecuteScalar());
-                koneksi.Close();
-
-                if (jumlah > 0)
-                {
-                    MessageBox.Show("Username sudah dipakai, silakan pilih username lain",
-                        "Daftar Akun", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtUsername.Focus();
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Gagal membaca data database: " + ex.Message,
-                    "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Username sudah dipakai, silakan pilih username lain",
+                    "Daftar Akun", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUsername.Focus();
                 return;
             }
 
@@ -124,50 +104,30 @@ namespace Bromo_Airlines
                 return;
             }
 
-            // Semua validasi lolos -> simpan akun baru ke tabel Akun
-            try
-            {
-                SqlConnection koneksi = new SqlConnection(Koneksi.connectionString);
-                koneksi.Open();
+            // Semua validasi lolos -> simpan akun baru ke data dummy
+            Akun akunBaru = new Akun();
+            akunBaru.ID = DataDummy.IdBerikutnya();
+            akunBaru.Username = username;
+            akunBaru.Password = password;
+            akunBaru.Nama = nama;
+            akunBaru.TanggalLahir = tanggalLahir.Date;
+            akunBaru.NomorTelepon = telepon;
+            // Pendaftaran dari form ini selalu customer (bukan admin)
+            akunBaru.MerupakanAdmin = false;
 
-                // Masukkan data dengan MerupakanAdmin = 0 (Customer)
-                string insert = "INSERT INTO Akun " +
-                    "(Username, Password, Nama, TanggalLahir, NomorTelepon, MerupakanAdmin) " +
-                    "VALUES (@username, @password, @nama, @tanggallahir, @nomortelepon, 0)";
+            DataDummy.TambahAkun(akunBaru);
 
-                SqlCommand simpan = new SqlCommand(insert, koneksi);
-                simpan.Parameters.AddWithValue("@username", username);
-                simpan.Parameters.AddWithValue("@password", password);
-                simpan.Parameters.AddWithValue("@nama", nama);
-                simpan.Parameters.AddWithValue("@tanggallahir", tanggalLahir.Date);
-                simpan.Parameters.AddWithValue("@nomortelepon", telepon);
-                simpan.ExecuteNonQuery();
+            // Simpan akun ke SesiLogin
+            SesiLogin.idAkun = akunBaru.ID;
+            SesiLogin.username = akunBaru.Username;
+            SesiLogin.nama = akunBaru.Nama;
+            SesiLogin.merupakanAdmin = false;
 
-                // Ambil ID akun yang baru dibuat
-                SqlCommand ambilId = new SqlCommand(
-                    "SELECT ID FROM Akun WHERE Username = @username", koneksi);
-                ambilId.Parameters.AddWithValue("@username", username);
-                int idBaru = Convert.ToInt32(ambilId.ExecuteScalar());
-
-                koneksi.Close();
-
-                // Simpan akun ke SesiLogin
-                SesiLogin.idAkun = idBaru;
-                SesiLogin.username = username;
-                SesiLogin.nama = nama;
-                SesiLogin.merupakanAdmin = false;
-
-                // Buka form Customer, lalu tutup form pendaftaran
-                pendaftaranBerhasil = true;
-                CustomerMainForm formCustomer = new CustomerMainForm();
-                formCustomer.Show();
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Gagal menyimpan data: " + ex.Message,
-                    "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            // Buka form Customer, lalu tutup form pendaftaran
+            pendaftaranBerhasil = true;
+            CustomerMainForm formCustomer = new CustomerMainForm();
+            formCustomer.Show();
+            this.Close();
         }
 
         // Ketika link "Login" diklik, tutup form ini.
