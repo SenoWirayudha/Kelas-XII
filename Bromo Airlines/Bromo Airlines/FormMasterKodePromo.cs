@@ -17,12 +17,8 @@ namespace Bromo_Airlines
         {
             InitializeComponent();
 
-            // Ikon jendela memakai logo Bromo Airlines (kalau file-nya ada)
-            Image logo = GambarLogo.Muat();
-            if (logo is Bitmap)
-            {
-                this.Icon = Icon.FromHandle(((Bitmap)logo).GetHicon());
-            }
+            // Ikon jendela memakai favicon Bromo Airlines (resource)
+            this.Icon = Properties.Resources.favicon;
 
             // Tampilkan data kode promo di grid
             MuatGrid();

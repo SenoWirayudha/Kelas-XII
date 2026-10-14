@@ -13,8 +13,9 @@ namespace Bromo_Airlines
         {
             InitializeComponent();
 
-            // Tampilkan logo Bromo Airlines (kalau file-nya ada)
-            picLogo.Image = GambarLogo.Muat();
+            // Ikon jendela + logo dari resource
+            this.Icon = Properties.Resources.favicon;
+            picLogo.Image = Properties.Resources.logo_register;
         }
 
         // Ketika tombol Daftar ditekan

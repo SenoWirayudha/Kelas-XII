@@ -38,12 +38,8 @@ namespace Bromo_Airlines
             // Ikon hamburger (karakter U+E700 dari font Segoe MDL2 Assets)
             btnMenu.Text = ((char)0xE700).ToString();
 
-            // Ikon jendela memakai logo Bromo Airlines (kalau file-nya ada)
-            Image logo = GambarLogo.Muat();
-            if (logo is Bitmap)
-            {
-                this.Icon = Icon.FromHandle(((Bitmap)logo).GetHicon());
-            }
+            // Ikon jendela memakai favicon Bromo Airlines (resource)
+            this.Icon = Properties.Resources.favicon;
 
             SusunItemMenu();
         }
@@ -58,22 +54,22 @@ namespace Bromo_Airlines
             teksMenu[3] = "Master Kode Promo";
             teksMenu[4] = "Ubah Status Penerbangan";
 
-            // Gambar ikon tiap menu (GDI+, dua versi)
+            // Gambar ikon tiap menu (resource gambar, dua versi)
             gambarNormal = new Image[6];
             gambarAktif = new Image[6];
-            gambarNormal[0] = GambarIkon.Pin(false);
-            gambarAktif[0] = GambarIkon.Pin(true);
-            gambarNormal[1] = GambarIkon.Pesawat(false);
-            gambarAktif[1] = GambarIkon.Pesawat(true);
-            gambarNormal[2] = GambarIkon.Kalender(false);
-            gambarAktif[2] = GambarIkon.Kalender(true);
-            gambarNormal[3] = GambarIkon.Tag(false);
-            gambarAktif[3] = GambarIkon.Tag(true);
-            gambarNormal[4] = GambarIkon.KalenderCatatan(false);
-            gambarAktif[4] = GambarIkon.KalenderCatatan(true);
+            gambarNormal[0] = Properties.Resources.ic_bandara;
+            gambarAktif[0] = Properties.Resources.ic_bandara_aktif;
+            gambarNormal[1] = Properties.Resources.ic_maskapai;
+            gambarAktif[1] = Properties.Resources.ic_maskapai_aktif;
+            gambarNormal[2] = Properties.Resources.ic_jadwal;
+            gambarAktif[2] = Properties.Resources.ic_jadwal_aktif;
+            gambarNormal[3] = Properties.Resources.ic_kode_promo;
+            gambarAktif[3] = Properties.Resources.ic_kode_promo_aktif;
+            gambarNormal[4] = Properties.Resources.ic_ubah_status;
+            gambarAktif[4] = Properties.Resources.ic_ubah_status_aktif;
             // Logout hanya satu versi (merah)
-            gambarNormal[5] = GambarIkon.Keluar();
-            gambarAktif[5] = GambarIkon.Keluar();
+            gambarNormal[5] = Properties.Resources.ic_logout;
+            gambarAktif[5] = Properties.Resources.ic_logout;
 
             // Warna teks tiap item
             warnaTeksNormal = new Color[6];

@@ -40,9 +40,9 @@ namespace Bromo_Airlines
             // 
             // picLogo
             // 
-            this.picLogo.Location = new System.Drawing.Point(110, 20);
+            this.picLogo.Location = new System.Drawing.Point(50, 10);
             this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(180, 110);
+            this.picLogo.Size = new System.Drawing.Size(300, 120);
             this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picLogo.TabIndex = 0;
             this.picLogo.TabStop = false;

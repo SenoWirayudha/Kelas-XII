@@ -67,5 +67,173 @@ namespace Bromo_Airlines.Properties
                 resourceCulture = value;
             }
         }
+
+        /// <summary>
+        ///   Cari resource System.Drawing.Icon bertipe favicon.
+        /// </summary>
+        internal static global::System.Drawing.Icon favicon
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("favicon", resourceCulture);
+                return ((global::System.Drawing.Icon)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Cari resource System.Drawing.Bitmap bertipe logo_login.
+        /// </summary>
+        internal static global::System.Drawing.Bitmap logo_login
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("logo_login", resourceCulture);
+                return ((global::System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Cari resource System.Drawing.Bitmap bertipe logo_register.
+        /// </summary>
+        internal static global::System.Drawing.Bitmap logo_register
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("logo_register", resourceCulture);
+                return ((global::System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Cari resource System.Drawing.Bitmap bertipe ic_bandara.
+        /// </summary>
+        internal static global::System.Drawing.Bitmap ic_bandara
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ic_bandara", resourceCulture);
+                return ((global::System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Cari resource System.Drawing.Bitmap bertipe ic_bandara_aktif.
+        /// </summary>
+        internal static global::System.Drawing.Bitmap ic_bandara_aktif
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ic_bandara_aktif", resourceCulture);
+                return ((global::System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Cari resource System.Drawing.Bitmap bertipe ic_maskapai.
+        /// </summary>
+        internal static global::System.Drawing.Bitmap ic_maskapai
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ic_maskapai", resourceCulture);
+                return ((global::System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Cari resource System.Drawing.Bitmap bertipe ic_maskapai_aktif.
+        /// </summary>
+        internal static global::System.Drawing.Bitmap ic_maskapai_aktif
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ic_maskapai_aktif", resourceCulture);
+                return ((global::System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Cari resource System.Drawing.Bitmap bertipe ic_jadwal.
+        /// </summary>
+        internal static global::System.Drawing.Bitmap ic_jadwal
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ic_jadwal", resourceCulture);
+                return ((global::System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Cari resource System.Drawing.Bitmap bertipe ic_jadwal_aktif.
+        /// </summary>
+        internal static global::System.Drawing.Bitmap ic_jadwal_aktif
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ic_jadwal_aktif", resourceCulture);
+                return ((global::System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Cari resource System.Drawing.Bitmap bertipe ic_kode_promo.
+        /// </summary>
+        internal static global::System.Drawing.Bitmap ic_kode_promo
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ic_kode_promo", resourceCulture);
+                return ((global::System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Cari resource System.Drawing.Bitmap bertipe ic_kode_promo_aktif.
+        /// </summary>
+        internal static global::System.Drawing.Bitmap ic_kode_promo_aktif
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ic_kode_promo_aktif", resourceCulture);
+                return ((global::System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Cari resource System.Drawing.Bitmap bertipe ic_ubah_status.
+        /// </summary>
+        internal static global::System.Drawing.Bitmap ic_ubah_status
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ic_ubah_status", resourceCulture);
+                return ((global::System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Cari resource System.Drawing.Bitmap bertipe ic_ubah_status_aktif.
+        /// </summary>
+        internal static global::System.Drawing.Bitmap ic_ubah_status_aktif
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ic_ubah_status_aktif", resourceCulture);
+                return ((global::System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Cari resource System.Drawing.Bitmap bertipe ic_logout.
+        /// </summary>
+        internal static global::System.Drawing.Bitmap ic_logout
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ic_logout", resourceCulture);
+                return ((global::System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

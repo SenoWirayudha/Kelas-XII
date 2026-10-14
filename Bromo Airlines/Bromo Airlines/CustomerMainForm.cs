@@ -10,6 +10,9 @@ namespace Bromo_Airlines
         public CustomerMainForm()
         {
             InitializeComponent();
+
+            // Ikon jendela dari resource
+            this.Icon = Properties.Resources.favicon;
         }
 
         // Kalau form ini ditutup, seluruh aplikasi ikut ditutup
