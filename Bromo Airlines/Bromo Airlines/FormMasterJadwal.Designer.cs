@@ -27,6 +27,18 @@ namespace Bromo_Airlines
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblJudul = new System.Windows.Forms.Label();
             this.lblDeskripsi = new System.Windows.Forms.Label();
             this.dgvJadwal = new System.Windows.Forms.DataGridView();
@@ -40,24 +52,24 @@ namespace Bromo_Airlines
             this.kolomHarga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kolomUbah = new System.Windows.Forms.DataGridViewButtonColumn();
             this.kolomHapus = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.lblKodePenerbangan = new System.Windows.Forms.Label();
-            this.mtbKode = new System.Windows.Forms.MaskedTextBox();
-            this.lblDari = new System.Windows.Forms.Label();
-            this.cmbDari = new System.Windows.Forms.ComboBox();
-            this.lblKe = new System.Windows.Forms.Label();
-            this.cmbKe = new System.Windows.Forms.ComboBox();
-            this.lblMaskapai = new System.Windows.Forms.Label();
-            this.cmbMaskapai = new System.Windows.Forms.ComboBox();
-            this.lblTanggal = new System.Windows.Forms.Label();
-            this.dtpTanggal = new System.Windows.Forms.DateTimePicker();
-            this.lblWaktu = new System.Windows.Forms.Label();
-            this.mtbWaktu = new System.Windows.Forms.MaskedTextBox();
-            this.lblDurasi = new System.Windows.Forms.Label();
-            this.mtbDurasi = new System.Windows.Forms.MaskedTextBox();
-            this.lblHarga = new System.Windows.Forms.Label();
-            this.nudHarga = new System.Windows.Forms.NumericUpDown();
-            this.btnBatal = new System.Windows.Forms.Button();
             this.btnSimpan = new System.Windows.Forms.Button();
+            this.btnBatal = new System.Windows.Forms.Button();
+            this.nudHarga = new System.Windows.Forms.NumericUpDown();
+            this.lblHarga = new System.Windows.Forms.Label();
+            this.mtbDurasi = new System.Windows.Forms.MaskedTextBox();
+            this.lblDurasi = new System.Windows.Forms.Label();
+            this.mtbWaktu = new System.Windows.Forms.MaskedTextBox();
+            this.lblWaktu = new System.Windows.Forms.Label();
+            this.dtpTanggal = new System.Windows.Forms.DateTimePicker();
+            this.lblTanggal = new System.Windows.Forms.Label();
+            this.cmbMaskapai = new System.Windows.Forms.ComboBox();
+            this.lblMaskapai = new System.Windows.Forms.Label();
+            this.cmbKe = new System.Windows.Forms.ComboBox();
+            this.lblKe = new System.Windows.Forms.Label();
+            this.cmbDari = new System.Windows.Forms.ComboBox();
+            this.lblDari = new System.Windows.Forms.Label();
+            this.mtbKode = new System.Windows.Forms.MaskedTextBox();
+            this.lblKodePenerbangan = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJadwal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHarga)).BeginInit();
             this.SuspendLayout();
@@ -65,11 +77,11 @@ namespace Bromo_Airlines
             // lblJudul
             // 
             this.lblJudul.AutoSize = true;
-            this.lblJudul.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Bold);
+            this.lblJudul.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblJudul.ForeColor = System.Drawing.Color.Black;
-            this.lblJudul.Location = new System.Drawing.Point(25, 12);
+            this.lblJudul.Location = new System.Drawing.Point(21, 17);
             this.lblJudul.Name = "lblJudul";
-            this.lblJudul.Size = new System.Drawing.Size(381, 34);
+            this.lblJudul.Size = new System.Drawing.Size(341, 37);
             this.lblJudul.TabIndex = 0;
             this.lblJudul.Text = "Master Jadwal Penerbangan";
             // 
@@ -78,9 +90,9 @@ namespace Bromo_Airlines
             this.lblDeskripsi.AutoSize = true;
             this.lblDeskripsi.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblDeskripsi.ForeColor = System.Drawing.Color.Black;
-            this.lblDeskripsi.Location = new System.Drawing.Point(28, 50);
+            this.lblDeskripsi.Location = new System.Drawing.Point(21, 44);
             this.lblDeskripsi.Name = "lblDeskripsi";
-            this.lblDeskripsi.Size = new System.Drawing.Size(294, 15);
+            this.lblDeskripsi.Size = new System.Drawing.Size(387, 25);
             this.lblDeskripsi.TabIndex = 1;
             this.lblDeskripsi.Text = "Semua jadwal penerbangan akan muncul di sini";
             // 
@@ -88,17 +100,19 @@ namespace Bromo_Airlines
             // 
             this.dgvJadwal.AllowUserToAddRows = false;
             this.dgvJadwal.AllowUserToDeleteRows = false;
-            this.dgvJadwal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvJadwal.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvJadwal.BackgroundColor = System.Drawing.Color.White;
-            this.dgvJadwal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.dgvJadwal.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvJadwal.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.White;
-            this.dgvJadwal.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.dgvJadwal.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.dgvJadwal.ColumnHeadersDefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvJadwal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvJadwal.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvJadwal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvJadwal.ColumnHeadersHeight = 32;
             this.dgvJadwal.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.kolomKode,
             this.kolomAsal,
@@ -110,259 +124,178 @@ namespace Bromo_Airlines
             this.kolomHarga,
             this.kolomUbah,
             this.kolomHapus});
-            this.dgvJadwal.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvJadwal.DefaultCellStyle = dataGridViewCellStyle12;
             this.dgvJadwal.EnableHeadersVisualStyles = false;
-            this.dgvJadwal.GridColor = System.Drawing.Color.FromArgb(180, 180, 180);
-            this.dgvJadwal.Location = new System.Drawing.Point(25, 78);
+            this.dgvJadwal.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.dgvJadwal.Location = new System.Drawing.Point(21, 77);
             this.dgvJadwal.MultiSelect = false;
             this.dgvJadwal.Name = "dgvJadwal";
             this.dgvJadwal.ReadOnly = true;
             this.dgvJadwal.RowHeadersVisible = false;
-            this.dgvJadwal.RowTemplate.Height = 38;
+            this.dgvJadwal.RowHeadersWidth = 62;
+            this.dgvJadwal.RowTemplate.Height = 33;
+            this.dgvJadwal.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvJadwal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvJadwal.Size = new System.Drawing.Size(770, 260);
+            this.dgvJadwal.Size = new System.Drawing.Size(722, 215);
             this.dgvJadwal.TabIndex = 2;
             this.dgvJadwal.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvJadwal_CellClick);
             // 
             // kolomKode
             // 
-            this.kolomKode.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(0, 120, 215);
-            this.kolomKode.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.kolomKode.DefaultCellStyle = dataGridViewCellStyle2;
             this.kolomKode.FillWeight = 10F;
             this.kolomKode.HeaderText = "Kode";
+            this.kolomKode.MinimumWidth = 8;
             this.kolomKode.Name = "kolomKode";
             this.kolomKode.ReadOnly = true;
             // 
             // kolomAsal
             // 
-            this.kolomAsal.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
-            this.kolomAsal.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            this.kolomAsal.DefaultCellStyle = dataGridViewCellStyle3;
             this.kolomAsal.FillWeight = 14F;
             this.kolomAsal.HeaderText = "Bandara Asal";
+            this.kolomAsal.MinimumWidth = 8;
             this.kolomAsal.Name = "kolomAsal";
             this.kolomAsal.ReadOnly = true;
             // 
             // kolomTujuan
             // 
-            this.kolomTujuan.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
-            this.kolomTujuan.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.kolomTujuan.DefaultCellStyle = dataGridViewCellStyle4;
             this.kolomTujuan.FillWeight = 14F;
             this.kolomTujuan.HeaderText = "Bandara Tujuan";
+            this.kolomTujuan.MinimumWidth = 8;
             this.kolomTujuan.Name = "kolomTujuan";
             this.kolomTujuan.ReadOnly = true;
             // 
             // kolomMaskapai
             // 
-            this.kolomMaskapai.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
-            this.kolomMaskapai.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            this.kolomMaskapai.DefaultCellStyle = dataGridViewCellStyle5;
             this.kolomMaskapai.FillWeight = 12F;
             this.kolomMaskapai.HeaderText = "Maskapai";
+            this.kolomMaskapai.MinimumWidth = 8;
             this.kolomMaskapai.Name = "kolomMaskapai";
             this.kolomMaskapai.ReadOnly = true;
             // 
             // kolomTanggal
             // 
-            this.kolomTanggal.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
-            this.kolomTanggal.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            this.kolomTanggal.DefaultCellStyle = dataGridViewCellStyle6;
             this.kolomTanggal.FillWeight = 10F;
             this.kolomTanggal.HeaderText = "Tanggal";
+            this.kolomTanggal.MinimumWidth = 8;
             this.kolomTanggal.Name = "kolomTanggal";
             this.kolomTanggal.ReadOnly = true;
             // 
             // kolomWaktu
             // 
-            this.kolomWaktu.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
-            this.kolomWaktu.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            this.kolomWaktu.DefaultCellStyle = dataGridViewCellStyle7;
             this.kolomWaktu.FillWeight = 7F;
             this.kolomWaktu.HeaderText = "Waktu";
+            this.kolomWaktu.MinimumWidth = 8;
             this.kolomWaktu.Name = "kolomWaktu";
             this.kolomWaktu.ReadOnly = true;
             // 
             // kolomDurasi
             // 
-            this.kolomDurasi.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
-            this.kolomDurasi.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            this.kolomDurasi.DefaultCellStyle = dataGridViewCellStyle8;
             this.kolomDurasi.FillWeight = 13F;
             this.kolomDurasi.HeaderText = "Durasi";
+            this.kolomDurasi.MinimumWidth = 8;
             this.kolomDurasi.Name = "kolomDurasi";
             this.kolomDurasi.ReadOnly = true;
             // 
             // kolomHarga
             // 
-            this.kolomHarga.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
-            this.kolomHarga.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            this.kolomHarga.DefaultCellStyle = dataGridViewCellStyle9;
             this.kolomHarga.FillWeight = 10F;
             this.kolomHarga.HeaderText = "Harga Tiket";
+            this.kolomHarga.MinimumWidth = 8;
             this.kolomHarga.Name = "kolomHarga";
             this.kolomHarga.ReadOnly = true;
             // 
             // kolomUbah
             // 
             this.kolomUbah.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.kolomUbah.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(225, 225, 225);
-            this.kolomUbah.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.kolomUbah.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(5);
-            this.kolomUbah.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(225, 225, 225);
-            this.kolomUbah.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            this.kolomUbah.DefaultCellStyle = dataGridViewCellStyle10;
             this.kolomUbah.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.kolomUbah.HeaderText = "";
+            this.kolomUbah.MinimumWidth = 8;
             this.kolomUbah.Name = "kolomUbah";
             this.kolomUbah.ReadOnly = true;
             this.kolomUbah.Text = "Ubah";
             this.kolomUbah.UseColumnTextForButtonValue = true;
-            this.kolomUbah.Width = 75;
+            this.kolomUbah.Width = 87;
             // 
             // kolomHapus
             // 
             this.kolomHapus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.kolomHapus.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(225, 225, 225);
-            this.kolomHapus.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.kolomHapus.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(5);
-            this.kolomHapus.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(225, 225, 225);
-            this.kolomHapus.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            this.kolomHapus.DefaultCellStyle = dataGridViewCellStyle11;
             this.kolomHapus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.kolomHapus.HeaderText = "";
+            this.kolomHapus.MinimumWidth = 8;
             this.kolomHapus.Name = "kolomHapus";
             this.kolomHapus.ReadOnly = true;
             this.kolomHapus.Text = "Hapus";
             this.kolomHapus.UseColumnTextForButtonValue = true;
-            this.kolomHapus.Width = 75;
+            this.kolomHapus.Width = 87;
             // 
-            // lblKodePenerbangan
+            // btnSimpan
             // 
-            this.lblKodePenerbangan.AutoSize = true;
-            this.lblKodePenerbangan.Location = new System.Drawing.Point(25, 365);
-            this.lblKodePenerbangan.Name = "lblKodePenerbangan";
-            this.lblKodePenerbangan.Size = new System.Drawing.Size(104, 15);
-            this.lblKodePenerbangan.TabIndex = 3;
-            this.lblKodePenerbangan.Text = "Kode Penerbangan";
+            this.btnSimpan.Location = new System.Drawing.Point(564, 456);
+            this.btnSimpan.Name = "btnSimpan";
+            this.btnSimpan.Size = new System.Drawing.Size(98, 28);
+            this.btnSimpan.TabIndex = 17;
+            this.btnSimpan.Text = "Simpan";
+            this.btnSimpan.UseVisualStyleBackColor = true;
+            this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
             // 
-            // mtbKode
+            // btnBatal
             // 
-            this.mtbKode.Location = new System.Drawing.Point(140, 361);
-            this.mtbKode.Mask = ">LL-0000";
-            this.mtbKode.Name = "mtbKode";
-            this.mtbKode.PromptChar = '_';
-            this.mtbKode.Size = new System.Drawing.Size(190, 23);
-            this.mtbKode.TabIndex = 4;
-            // 
-            // lblDari
-            // 
-            this.lblDari.AutoSize = true;
-            this.lblDari.Location = new System.Drawing.Point(25, 401);
-            this.lblDari.Name = "lblDari";
-            this.lblDari.Size = new System.Drawing.Size(27, 15);
-            this.lblDari.TabIndex = 5;
-            this.lblDari.Text = "Dari";
-            // 
-            // cmbDari
-            // 
-            this.cmbDari.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDari.Location = new System.Drawing.Point(140, 397);
-            this.cmbDari.Name = "cmbDari";
-            this.cmbDari.Size = new System.Drawing.Size(190, 23);
-            this.cmbDari.TabIndex = 6;
-            // 
-            // lblKe
-            // 
-            this.lblKe.AutoSize = true;
-            this.lblKe.Location = new System.Drawing.Point(25, 437);
-            this.lblKe.Name = "lblKe";
-            this.lblKe.Size = new System.Drawing.Size(22, 15);
-            this.lblKe.TabIndex = 7;
-            this.lblKe.Text = "Ke";
-            // 
-            // cmbKe
-            // 
-            this.cmbKe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbKe.Location = new System.Drawing.Point(140, 433);
-            this.cmbKe.Name = "cmbKe";
-            this.cmbKe.Size = new System.Drawing.Size(190, 23);
-            this.cmbKe.TabIndex = 8;
-            // 
-            // lblMaskapai
-            // 
-            this.lblMaskapai.AutoSize = true;
-            this.lblMaskapai.Location = new System.Drawing.Point(25, 473);
-            this.lblMaskapai.Name = "lblMaskapai";
-            this.lblMaskapai.Size = new System.Drawing.Size(59, 15);
-            this.lblMaskapai.TabIndex = 9;
-            this.lblMaskapai.Text = "Maskapai";
-            // 
-            // cmbMaskapai
-            // 
-            this.cmbMaskapai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMaskapai.Location = new System.Drawing.Point(140, 469);
-            this.cmbMaskapai.Name = "cmbMaskapai";
-            this.cmbMaskapai.Size = new System.Drawing.Size(190, 23);
-            this.cmbMaskapai.TabIndex = 10;
-            // 
-            // lblTanggal
-            // 
-            this.lblTanggal.AutoSize = true;
-            this.lblTanggal.Location = new System.Drawing.Point(350, 365);
-            this.lblTanggal.Name = "lblTanggal";
-            this.lblTanggal.Size = new System.Drawing.Size(51, 15);
-            this.lblTanggal.TabIndex = 11;
-            this.lblTanggal.Text = "Tanggal";
-            // 
-            // dtpTanggal
-            // 
-            this.dtpTanggal.CustomFormat = "dd-MM-yyyy";
-            this.dtpTanggal.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpTanggal.Location = new System.Drawing.Point(475, 361);
-            this.dtpTanggal.Name = "dtpTanggal";
-            this.dtpTanggal.Size = new System.Drawing.Size(245, 23);
-            this.dtpTanggal.TabIndex = 12;
-            // 
-            // lblWaktu
-            // 
-            this.lblWaktu.AutoSize = true;
-            this.lblWaktu.Location = new System.Drawing.Point(350, 401);
-            this.lblWaktu.Name = "lblWaktu";
-            this.lblWaktu.Size = new System.Drawing.Size(121, 15);
-            this.lblWaktu.TabIndex = 13;
-            this.lblWaktu.Text = "Waktu Keberangkatan";
-            // 
-            // mtbWaktu
-            // 
-            this.mtbWaktu.Location = new System.Drawing.Point(475, 397);
-            this.mtbWaktu.Mask = "00:00";
-            this.mtbWaktu.Name = "mtbWaktu";
-            this.mtbWaktu.PromptChar = '_';
-            this.mtbWaktu.Size = new System.Drawing.Size(245, 23);
-            this.mtbWaktu.TabIndex = 14;
-            // 
-            // lblDurasi
-            // 
-            this.lblDurasi.AutoSize = true;
-            this.lblDurasi.Location = new System.Drawing.Point(350, 437);
-            this.lblDurasi.Name = "lblDurasi";
-            this.lblDurasi.Size = new System.Drawing.Size(113, 15);
-            this.lblDurasi.TabIndex = 15;
-            this.lblDurasi.Text = "Durasi Penerbangan";
-            // 
-            // mtbDurasi
-            // 
-            this.mtbDurasi.Location = new System.Drawing.Point(475, 433);
-            this.mtbDurasi.Mask = "00 j\\am 00 menit";
-            this.mtbDurasi.Name = "mtbDurasi";
-            this.mtbDurasi.PromptChar = '_';
-            this.mtbDurasi.Size = new System.Drawing.Size(245, 23);
-            this.mtbDurasi.TabIndex = 16;
-            // 
-            // lblHarga
-            // 
-            this.lblHarga.AutoSize = true;
-            this.lblHarga.Location = new System.Drawing.Point(350, 473);
-            this.lblHarga.Name = "lblHarga";
-            this.lblHarga.Size = new System.Drawing.Size(92, 15);
-            this.lblHarga.TabIndex = 17;
-            this.lblHarga.Text = "Harga per Tiket";
+            this.btnBatal.Location = new System.Drawing.Point(454, 456);
+            this.btnBatal.Name = "btnBatal";
+            this.btnBatal.Size = new System.Drawing.Size(98, 28);
+            this.btnBatal.TabIndex = 16;
+            this.btnBatal.Text = "Batal";
+            this.btnBatal.UseVisualStyleBackColor = true;
+            this.btnBatal.Click += new System.EventHandler(this.btnBatal_Click);
             // 
             // nudHarga
             // 
-            this.nudHarga.Location = new System.Drawing.Point(475, 469);
+            this.nudHarga.Location = new System.Drawing.Point(422, 414);
             this.nudHarga.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -374,8 +307,8 @@ namespace Bromo_Airlines
             0,
             0});
             this.nudHarga.Name = "nudHarga";
-            this.nudHarga.Size = new System.Drawing.Size(245, 23);
-            this.nudHarga.TabIndex = 18;
+            this.nudHarga.Size = new System.Drawing.Size(241, 31);
+            this.nudHarga.TabIndex = 15;
             this.nudHarga.ThousandsSeparator = true;
             this.nudHarga.Value = new decimal(new int[] {
             1,
@@ -383,34 +316,141 @@ namespace Bromo_Airlines
             0,
             0});
             // 
-            // btnBatal
+            // lblHarga
             // 
-            this.btnBatal.Location = new System.Drawing.Point(485, 510);
-            this.btnBatal.Name = "btnBatal";
-            this.btnBatal.Size = new System.Drawing.Size(110, 30);
-            this.btnBatal.TabIndex = 19;
-            this.btnBatal.Text = "Batal";
-            this.btnBatal.UseVisualStyleBackColor = true;
-            this.btnBatal.Click += new System.EventHandler(this.btnBatal_Click);
+            this.lblHarga.AutoSize = true;
+            this.lblHarga.Location = new System.Drawing.Point(323, 417);
+            this.lblHarga.Name = "lblHarga";
+            this.lblHarga.Size = new System.Drawing.Size(133, 25);
+            this.lblHarga.TabIndex = 14;
+            this.lblHarga.Text = "Harga per Tiket";
             // 
-            // btnSimpan
+            // mtbDurasi
             // 
-            this.btnSimpan.Location = new System.Drawing.Point(610, 510);
-            this.btnSimpan.Name = "btnSimpan";
-            this.btnSimpan.Size = new System.Drawing.Size(110, 30);
-            this.btnSimpan.TabIndex = 20;
-            this.btnSimpan.Text = "Simpan";
-            this.btnSimpan.UseVisualStyleBackColor = true;
-            this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
+            this.mtbDurasi.Location = new System.Drawing.Point(422, 383);
+            this.mtbDurasi.Mask = "00 j\\am 00 menit";
+            this.mtbDurasi.Name = "mtbDurasi";
+            this.mtbDurasi.Size = new System.Drawing.Size(241, 31);
+            this.mtbDurasi.TabIndex = 13;
+            // 
+            // lblDurasi
+            // 
+            this.lblDurasi.AutoSize = true;
+            this.lblDurasi.Location = new System.Drawing.Point(323, 386);
+            this.lblDurasi.Name = "lblDurasi";
+            this.lblDurasi.Size = new System.Drawing.Size(170, 25);
+            this.lblDurasi.TabIndex = 12;
+            this.lblDurasi.Text = "Durasi Penerbangan";
+            // 
+            // mtbWaktu
+            // 
+            this.mtbWaktu.Location = new System.Drawing.Point(422, 352);
+            this.mtbWaktu.Mask = "00:00";
+            this.mtbWaktu.Name = "mtbWaktu";
+            this.mtbWaktu.Size = new System.Drawing.Size(241, 31);
+            this.mtbWaktu.TabIndex = 11;
+            // 
+            // lblWaktu
+            // 
+            this.lblWaktu.AutoSize = true;
+            this.lblWaktu.Location = new System.Drawing.Point(323, 355);
+            this.lblWaktu.Name = "lblWaktu";
+            this.lblWaktu.Size = new System.Drawing.Size(185, 25);
+            this.lblWaktu.TabIndex = 10;
+            this.lblWaktu.Text = "Waktu Keberangkatan";
+            // 
+            // dtpTanggal
+            // 
+            this.dtpTanggal.CustomFormat = "dd-MM-yyyy";
+            this.dtpTanggal.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpTanggal.Location = new System.Drawing.Point(422, 321);
+            this.dtpTanggal.Name = "dtpTanggal";
+            this.dtpTanggal.Size = new System.Drawing.Size(241, 31);
+            this.dtpTanggal.TabIndex = 9;
+            // 
+            // lblTanggal
+            // 
+            this.lblTanggal.AutoSize = true;
+            this.lblTanggal.Location = new System.Drawing.Point(323, 324);
+            this.lblTanggal.Name = "lblTanggal";
+            this.lblTanggal.Size = new System.Drawing.Size(73, 25);
+            this.lblTanggal.TabIndex = 8;
+            this.lblTanggal.Text = "Tanggal";
+            // 
+            // cmbMaskapai
+            // 
+            this.cmbMaskapai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMaskapai.Location = new System.Drawing.Point(107, 414);
+            this.cmbMaskapai.Name = "cmbMaskapai";
+            this.cmbMaskapai.Size = new System.Drawing.Size(193, 33);
+            this.cmbMaskapai.TabIndex = 7;
+            // 
+            // lblMaskapai
+            // 
+            this.lblMaskapai.AutoSize = true;
+            this.lblMaskapai.Location = new System.Drawing.Point(21, 417);
+            this.lblMaskapai.Name = "lblMaskapai";
+            this.lblMaskapai.Size = new System.Drawing.Size(87, 25);
+            this.lblMaskapai.TabIndex = 6;
+            this.lblMaskapai.Text = "Maskapai";
+            // 
+            // cmbKe
+            // 
+            this.cmbKe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbKe.Location = new System.Drawing.Point(107, 383);
+            this.cmbKe.Name = "cmbKe";
+            this.cmbKe.Size = new System.Drawing.Size(193, 33);
+            this.cmbKe.TabIndex = 5;
+            // 
+            // lblKe
+            // 
+            this.lblKe.AutoSize = true;
+            this.lblKe.Location = new System.Drawing.Point(21, 386);
+            this.lblKe.Name = "lblKe";
+            this.lblKe.Size = new System.Drawing.Size(31, 25);
+            this.lblKe.TabIndex = 4;
+            this.lblKe.Text = "Ke";
+            // 
+            // cmbDari
+            // 
+            this.cmbDari.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDari.Location = new System.Drawing.Point(107, 352);
+            this.cmbDari.Name = "cmbDari";
+            this.cmbDari.Size = new System.Drawing.Size(193, 33);
+            this.cmbDari.TabIndex = 3;
+            // 
+            // lblDari
+            // 
+            this.lblDari.AutoSize = true;
+            this.lblDari.Location = new System.Drawing.Point(21, 355);
+            this.lblDari.Name = "lblDari";
+            this.lblDari.Size = new System.Drawing.Size(44, 25);
+            this.lblDari.TabIndex = 2;
+            this.lblDari.Text = "Dari";
+            // 
+            // mtbKode
+            // 
+            this.mtbKode.Location = new System.Drawing.Point(107, 321);
+            this.mtbKode.Mask = ">LL-0000";
+            this.mtbKode.Name = "mtbKode";
+            this.mtbKode.Size = new System.Drawing.Size(193, 31);
+            this.mtbKode.TabIndex = 1;
+            // 
+            // lblKodePenerbangan
+            // 
+            this.lblKodePenerbangan.AutoSize = true;
+            this.lblKodePenerbangan.Location = new System.Drawing.Point(21, 324);
+            this.lblKodePenerbangan.Name = "lblKodePenerbangan";
+            this.lblKodePenerbangan.Size = new System.Drawing.Size(161, 25);
+            this.lblKodePenerbangan.TabIndex = 0;
+            this.lblKodePenerbangan.Text = "Kode Penerbangan";
             // 
             // FormMasterJadwal
             // 
-            this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(790, 560);
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(820, 540);
+            this.ClientSize = new System.Drawing.Size(764, 509);
+            this.Controls.Add(this.dgvJadwal);
             this.Controls.Add(this.btnSimpan);
             this.Controls.Add(this.btnBatal);
             this.Controls.Add(this.nudHarga);
@@ -429,7 +469,6 @@ namespace Bromo_Airlines
             this.Controls.Add(this.lblDari);
             this.Controls.Add(this.mtbKode);
             this.Controls.Add(this.lblKodePenerbangan);
-            this.Controls.Add(this.dgvJadwal);
             this.Controls.Add(this.lblDeskripsi);
             this.Controls.Add(this.lblJudul);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);

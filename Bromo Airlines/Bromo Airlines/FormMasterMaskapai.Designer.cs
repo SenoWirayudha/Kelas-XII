@@ -27,6 +27,14 @@ namespace Bromo_Airlines
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblJudul = new System.Windows.Forms.Label();
             this.lblDeskripsi = new System.Windows.Forms.Label();
             this.dgvMaskapai = new System.Windows.Forms.DataGridView();
@@ -36,16 +44,16 @@ namespace Bromo_Airlines
             this.kolomDeskripsi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kolomUbah = new System.Windows.Forms.DataGridViewButtonColumn();
             this.kolomHapus = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.lblNama = new System.Windows.Forms.Label();
-            this.txtNama = new System.Windows.Forms.TextBox();
-            this.lblPerusahaan = new System.Windows.Forms.Label();
-            this.txtPerusahaan = new System.Windows.Forms.TextBox();
-            this.lblJumlahKru = new System.Windows.Forms.Label();
-            this.nudJumlahKru = new System.Windows.Forms.NumericUpDown();
-            this.lblDeskripsiInput = new System.Windows.Forms.Label();
-            this.txtDeskripsi = new System.Windows.Forms.TextBox();
-            this.btnBatal = new System.Windows.Forms.Button();
             this.btnSimpan = new System.Windows.Forms.Button();
+            this.btnBatal = new System.Windows.Forms.Button();
+            this.txtDeskripsi = new System.Windows.Forms.TextBox();
+            this.lblDeskripsiInput = new System.Windows.Forms.Label();
+            this.nudJumlahKru = new System.Windows.Forms.NumericUpDown();
+            this.lblJumlahKru = new System.Windows.Forms.Label();
+            this.txtPerusahaan = new System.Windows.Forms.TextBox();
+            this.lblPerusahaan = new System.Windows.Forms.Label();
+            this.txtNama = new System.Windows.Forms.TextBox();
+            this.lblNama = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaskapai)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudJumlahKru)).BeginInit();
             this.SuspendLayout();
@@ -53,11 +61,11 @@ namespace Bromo_Airlines
             // lblJudul
             // 
             this.lblJudul.AutoSize = true;
-            this.lblJudul.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Bold);
+            this.lblJudul.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblJudul.ForeColor = System.Drawing.Color.Black;
-            this.lblJudul.Location = new System.Drawing.Point(25, 12);
+            this.lblJudul.Location = new System.Drawing.Point(21, 17);
             this.lblJudul.Name = "lblJudul";
-            this.lblJudul.Size = new System.Drawing.Size(247, 34);
+            this.lblJudul.Size = new System.Drawing.Size(196, 37);
             this.lblJudul.TabIndex = 0;
             this.lblJudul.Text = "Master Maskapai";
             // 
@@ -66,9 +74,9 @@ namespace Bromo_Airlines
             this.lblDeskripsi.AutoSize = true;
             this.lblDeskripsi.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblDeskripsi.ForeColor = System.Drawing.Color.Black;
-            this.lblDeskripsi.Location = new System.Drawing.Point(28, 50);
+            this.lblDeskripsi.Location = new System.Drawing.Point(21, 44);
             this.lblDeskripsi.Name = "lblDeskripsi";
-            this.lblDeskripsi.Size = new System.Drawing.Size(294, 15);
+            this.lblDeskripsi.Size = new System.Drawing.Size(413, 25);
             this.lblDeskripsi.TabIndex = 1;
             this.lblDeskripsi.Text = "Semua maskapai yang terdaftar akan muncul di sini";
             // 
@@ -76,17 +84,19 @@ namespace Bromo_Airlines
             // 
             this.dgvMaskapai.AllowUserToAddRows = false;
             this.dgvMaskapai.AllowUserToDeleteRows = false;
-            this.dgvMaskapai.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvMaskapai.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMaskapai.BackgroundColor = System.Drawing.Color.White;
-            this.dgvMaskapai.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.dgvMaskapai.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvMaskapai.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.White;
-            this.dgvMaskapai.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.dgvMaskapai.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.dgvMaskapai.ColumnHeadersDefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvMaskapai.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMaskapai.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvMaskapai.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvMaskapai.ColumnHeadersHeight = 32;
             this.dgvMaskapai.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.kolomNama,
             this.kolomPerusahaan,
@@ -94,144 +104,160 @@ namespace Bromo_Airlines
             this.kolomDeskripsi,
             this.kolomUbah,
             this.kolomHapus});
-            this.dgvMaskapai.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMaskapai.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvMaskapai.EnableHeadersVisualStyles = false;
-            this.dgvMaskapai.GridColor = System.Drawing.Color.FromArgb(180, 180, 180);
-            this.dgvMaskapai.Location = new System.Drawing.Point(25, 78);
+            this.dgvMaskapai.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.dgvMaskapai.Location = new System.Drawing.Point(21, 77);
             this.dgvMaskapai.MultiSelect = false;
             this.dgvMaskapai.Name = "dgvMaskapai";
             this.dgvMaskapai.ReadOnly = true;
             this.dgvMaskapai.RowHeadersVisible = false;
-            this.dgvMaskapai.RowTemplate.Height = 38;
+            this.dgvMaskapai.RowHeadersWidth = 62;
+            this.dgvMaskapai.RowTemplate.Height = 33;
+            this.dgvMaskapai.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvMaskapai.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMaskapai.Size = new System.Drawing.Size(770, 260);
+            this.dgvMaskapai.Size = new System.Drawing.Size(722, 215);
             this.dgvMaskapai.TabIndex = 2;
             this.dgvMaskapai.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaskapai_CellClick);
             // 
             // kolomNama
             // 
-            this.kolomNama.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(0, 120, 215);
-            this.kolomNama.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.kolomNama.DefaultCellStyle = dataGridViewCellStyle2;
             this.kolomNama.FillWeight = 22F;
             this.kolomNama.HeaderText = "Nama";
+            this.kolomNama.MinimumWidth = 8;
             this.kolomNama.Name = "kolomNama";
             this.kolomNama.ReadOnly = true;
             // 
             // kolomPerusahaan
             // 
-            this.kolomPerusahaan.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
-            this.kolomPerusahaan.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            this.kolomPerusahaan.DefaultCellStyle = dataGridViewCellStyle3;
             this.kolomPerusahaan.FillWeight = 22F;
             this.kolomPerusahaan.HeaderText = "Perusahaan";
+            this.kolomPerusahaan.MinimumWidth = 8;
             this.kolomPerusahaan.Name = "kolomPerusahaan";
             this.kolomPerusahaan.ReadOnly = true;
             // 
             // kolomJumlahKru
             // 
-            this.kolomJumlahKru.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
-            this.kolomJumlahKru.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.kolomJumlahKru.DefaultCellStyle = dataGridViewCellStyle4;
             this.kolomJumlahKru.FillWeight = 13F;
             this.kolomJumlahKru.HeaderText = "Jumlah Kru";
+            this.kolomJumlahKru.MinimumWidth = 8;
             this.kolomJumlahKru.Name = "kolomJumlahKru";
             this.kolomJumlahKru.ReadOnly = true;
             // 
             // kolomDeskripsi
             // 
-            this.kolomDeskripsi.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
-            this.kolomDeskripsi.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            this.kolomDeskripsi.DefaultCellStyle = dataGridViewCellStyle5;
             this.kolomDeskripsi.FillWeight = 28F;
             this.kolomDeskripsi.HeaderText = "Deskripsi";
+            this.kolomDeskripsi.MinimumWidth = 8;
             this.kolomDeskripsi.Name = "kolomDeskripsi";
             this.kolomDeskripsi.ReadOnly = true;
             // 
             // kolomUbah
             // 
             this.kolomUbah.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.kolomUbah.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(225, 225, 225);
-            this.kolomUbah.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.kolomUbah.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(5);
-            this.kolomUbah.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(225, 225, 225);
-            this.kolomUbah.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            this.kolomUbah.DefaultCellStyle = dataGridViewCellStyle6;
             this.kolomUbah.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.kolomUbah.HeaderText = "";
+            this.kolomUbah.MinimumWidth = 8;
             this.kolomUbah.Name = "kolomUbah";
             this.kolomUbah.ReadOnly = true;
             this.kolomUbah.Text = "Ubah";
             this.kolomUbah.UseColumnTextForButtonValue = true;
-            this.kolomUbah.Width = 100;
+            this.kolomUbah.Width = 87;
             // 
             // kolomHapus
             // 
             this.kolomHapus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.kolomHapus.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(225, 225, 225);
-            this.kolomHapus.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.kolomHapus.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(5);
-            this.kolomHapus.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(225, 225, 225);
-            this.kolomHapus.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            this.kolomHapus.DefaultCellStyle = dataGridViewCellStyle8;
             this.kolomHapus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.kolomHapus.HeaderText = "";
+            this.kolomHapus.MinimumWidth = 8;
             this.kolomHapus.Name = "kolomHapus";
             this.kolomHapus.ReadOnly = true;
             this.kolomHapus.Text = "Hapus";
             this.kolomHapus.UseColumnTextForButtonValue = true;
-            this.kolomHapus.Width = 100;
+            this.kolomHapus.Width = 87;
             // 
-            // lblNama
+            // btnSimpan
             // 
-            this.lblNama.AutoSize = true;
-            this.lblNama.Location = new System.Drawing.Point(25, 365);
-            this.lblNama.Name = "lblNama";
-            this.lblNama.Size = new System.Drawing.Size(39, 15);
-            this.lblNama.TabIndex = 3;
-            this.lblNama.Text = "Nama";
+            this.btnSimpan.Location = new System.Drawing.Point(564, 456);
+            this.btnSimpan.Name = "btnSimpan";
+            this.btnSimpan.Size = new System.Drawing.Size(98, 28);
+            this.btnSimpan.TabIndex = 12;
+            this.btnSimpan.Text = "Simpan";
+            this.btnSimpan.UseVisualStyleBackColor = true;
+            this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
             // 
-            // txtNama
+            // btnBatal
             // 
-            this.txtNama.Location = new System.Drawing.Point(105, 361);
-            this.txtNama.Name = "txtNama";
-            this.txtNama.Size = new System.Drawing.Size(205, 23);
-            this.txtNama.TabIndex = 4;
+            this.btnBatal.Location = new System.Drawing.Point(454, 456);
+            this.btnBatal.Name = "btnBatal";
+            this.btnBatal.Size = new System.Drawing.Size(98, 28);
+            this.btnBatal.TabIndex = 11;
+            this.btnBatal.Text = "Batal";
+            this.btnBatal.UseVisualStyleBackColor = true;
+            this.btnBatal.Click += new System.EventHandler(this.btnBatal_Click);
             // 
-            // lblPerusahaan
+            // txtDeskripsi
             // 
-            this.lblPerusahaan.AutoSize = true;
-            this.lblPerusahaan.Location = new System.Drawing.Point(25, 400);
-            this.lblPerusahaan.Name = "lblPerusahaan";
-            this.lblPerusahaan.Size = new System.Drawing.Size(74, 15);
-            this.lblPerusahaan.TabIndex = 5;
-            this.lblPerusahaan.Text = "Perusahaan";
+            this.txtDeskripsi.AcceptsReturn = true;
+            this.txtDeskripsi.Location = new System.Drawing.Point(422, 342);
+            this.txtDeskripsi.Multiline = true;
+            this.txtDeskripsi.Name = "txtDeskripsi";
+            this.txtDeskripsi.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtDeskripsi.Size = new System.Drawing.Size(241, 84);
+            this.txtDeskripsi.TabIndex = 10;
             // 
-            // txtPerusahaan
+            // lblDeskripsiInput
             // 
-            this.txtPerusahaan.Location = new System.Drawing.Point(105, 396);
-            this.txtPerusahaan.Name = "txtPerusahaan";
-            this.txtPerusahaan.Size = new System.Drawing.Size(205, 23);
-            this.txtPerusahaan.TabIndex = 6;
-            // 
-            // lblJumlahKru
-            // 
-            this.lblJumlahKru.AutoSize = true;
-            this.lblJumlahKru.Location = new System.Drawing.Point(25, 435);
-            this.lblJumlahKru.Name = "lblJumlahKru";
-            this.lblJumlahKru.Size = new System.Drawing.Size(67, 15);
-            this.lblJumlahKru.TabIndex = 7;
-            this.lblJumlahKru.Text = "Jumlah Kru";
+            this.lblDeskripsiInput.AutoSize = true;
+            this.lblDeskripsiInput.Location = new System.Drawing.Point(323, 345);
+            this.lblDeskripsiInput.Name = "lblDeskripsiInput";
+            this.lblDeskripsiInput.Size = new System.Drawing.Size(84, 25);
+            this.lblDeskripsiInput.TabIndex = 9;
+            this.lblDeskripsiInput.Text = "Deskripsi";
             // 
             // nudJumlahKru
             // 
-            this.nudJumlahKru.Location = new System.Drawing.Point(105, 431);
-            this.nudJumlahKru.Maximum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
+            this.nudJumlahKru.Location = new System.Drawing.Point(107, 383);
             this.nudJumlahKru.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.nudJumlahKru.Name = "nudJumlahKru";
-            this.nudJumlahKru.Size = new System.Drawing.Size(205, 23);
+            this.nudJumlahKru.Size = new System.Drawing.Size(193, 31);
             this.nudJumlahKru.TabIndex = 8;
             this.nudJumlahKru.Value = new decimal(new int[] {
             1,
@@ -239,53 +265,53 @@ namespace Bromo_Airlines
             0,
             0});
             // 
-            // lblDeskripsiInput
+            // lblJumlahKru
             // 
-            this.lblDeskripsiInput.AutoSize = true;
-            this.lblDeskripsiInput.Location = new System.Drawing.Point(340, 365);
-            this.lblDeskripsiInput.Name = "lblDeskripsiInput";
-            this.lblDeskripsiInput.Size = new System.Drawing.Size(60, 15);
-            this.lblDeskripsiInput.TabIndex = 9;
-            this.lblDeskripsiInput.Text = "Deskripsi";
+            this.lblJumlahKru.AutoSize = true;
+            this.lblJumlahKru.Location = new System.Drawing.Point(21, 386);
+            this.lblJumlahKru.Name = "lblJumlahKru";
+            this.lblJumlahKru.Size = new System.Drawing.Size(98, 25);
+            this.lblJumlahKru.TabIndex = 7;
+            this.lblJumlahKru.Text = "Jumlah Kru";
             // 
-            // txtDeskripsi
+            // txtPerusahaan
             // 
-            this.txtDeskripsi.AcceptsReturn = true;
-            this.txtDeskripsi.Location = new System.Drawing.Point(420, 361);
-            this.txtDeskripsi.Multiline = true;
-            this.txtDeskripsi.Name = "txtDeskripsi";
-            this.txtDeskripsi.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDeskripsi.Size = new System.Drawing.Size(290, 95);
-            this.txtDeskripsi.TabIndex = 10;
+            this.txtPerusahaan.Location = new System.Drawing.Point(107, 352);
+            this.txtPerusahaan.Name = "txtPerusahaan";
+            this.txtPerusahaan.Size = new System.Drawing.Size(193, 31);
+            this.txtPerusahaan.TabIndex = 6;
             // 
-            // btnBatal
+            // lblPerusahaan
             // 
-            this.btnBatal.Location = new System.Drawing.Point(475, 475);
-            this.btnBatal.Name = "btnBatal";
-            this.btnBatal.Size = new System.Drawing.Size(110, 30);
-            this.btnBatal.TabIndex = 11;
-            this.btnBatal.Text = "Batal";
-            this.btnBatal.UseVisualStyleBackColor = true;
-            this.btnBatal.Click += new System.EventHandler(this.btnBatal_Click);
+            this.lblPerusahaan.AutoSize = true;
+            this.lblPerusahaan.Location = new System.Drawing.Point(21, 355);
+            this.lblPerusahaan.Name = "lblPerusahaan";
+            this.lblPerusahaan.Size = new System.Drawing.Size(101, 25);
+            this.lblPerusahaan.TabIndex = 5;
+            this.lblPerusahaan.Text = "Perusahaan";
             // 
-            // btnSimpan
+            // txtNama
             // 
-            this.btnSimpan.Location = new System.Drawing.Point(600, 475);
-            this.btnSimpan.Name = "btnSimpan";
-            this.btnSimpan.Size = new System.Drawing.Size(110, 30);
-            this.btnSimpan.TabIndex = 12;
-            this.btnSimpan.Text = "Simpan";
-            this.btnSimpan.UseVisualStyleBackColor = true;
-            this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
+            this.txtNama.Location = new System.Drawing.Point(107, 321);
+            this.txtNama.Name = "txtNama";
+            this.txtNama.Size = new System.Drawing.Size(193, 31);
+            this.txtNama.TabIndex = 4;
+            // 
+            // lblNama
+            // 
+            this.lblNama.AutoSize = true;
+            this.lblNama.Location = new System.Drawing.Point(21, 324);
+            this.lblNama.Name = "lblNama";
+            this.lblNama.Size = new System.Drawing.Size(59, 25);
+            this.lblNama.TabIndex = 3;
+            this.lblNama.Text = "Nama";
             // 
             // FormMasterMaskapai
             // 
-            this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(790, 525);
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(820, 530);
+            this.ClientSize = new System.Drawing.Size(764, 509);
+            this.Controls.Add(this.dgvMaskapai);
             this.Controls.Add(this.btnSimpan);
             this.Controls.Add(this.btnBatal);
             this.Controls.Add(this.txtDeskripsi);
@@ -296,7 +322,6 @@ namespace Bromo_Airlines
             this.Controls.Add(this.lblPerusahaan);
             this.Controls.Add(this.txtNama);
             this.Controls.Add(this.lblNama);
-            this.Controls.Add(this.dgvMaskapai);
             this.Controls.Add(this.lblDeskripsi);
             this.Controls.Add(this.lblJudul);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);

@@ -54,11 +54,11 @@ namespace Bromo_Airlines
             // lblJudul
             // 
             this.lblJudul.AutoSize = true;
-            this.lblJudul.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Bold);
+            this.lblJudul.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblJudul.ForeColor = System.Drawing.Color.Black;
-            this.lblJudul.Location = new System.Drawing.Point(25, 12);
+            this.lblJudul.Location = new System.Drawing.Point(21, 17);
             this.lblJudul.Name = "lblJudul";
-            this.lblJudul.Size = new System.Drawing.Size(405, 34);
+            this.lblJudul.Size = new System.Drawing.Size(331, 37);
             this.lblJudul.TabIndex = 0;
             this.lblJudul.Text = "Ubah Status Penerbangan";
             // 
@@ -67,9 +67,9 @@ namespace Bromo_Airlines
             this.lblDeskripsi.AutoSize = true;
             this.lblDeskripsi.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblDeskripsi.ForeColor = System.Drawing.Color.Black;
-            this.lblDeskripsi.Location = new System.Drawing.Point(28, 50);
+            this.lblDeskripsi.Location = new System.Drawing.Point(21, 44);
             this.lblDeskripsi.Name = "lblDeskripsi";
-            this.lblDeskripsi.Size = new System.Drawing.Size(289, 15);
+            this.lblDeskripsi.Size = new System.Drawing.Size(449, 25);
             this.lblDeskripsi.TabIndex = 1;
             this.lblDeskripsi.Text = "Anda bisa mengubah status jadwal penerbangan di sini";
             // 
@@ -77,8 +77,6 @@ namespace Bromo_Airlines
             // 
             this.dgvStatus.AllowUserToAddRows = false;
             this.dgvStatus.AllowUserToDeleteRows = false;
-            this.dgvStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvStatus.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvStatus.BackgroundColor = System.Drawing.Color.White;
             this.dgvStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -87,7 +85,8 @@ namespace Bromo_Airlines
             this.dgvStatus.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.dgvStatus.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.dgvStatus.ColumnHeadersDefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvStatus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStatus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvStatus.ColumnHeadersHeight = 32;
             this.dgvStatus.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.kolomKode,
             this.kolomMaskapai,
@@ -100,16 +99,18 @@ namespace Bromo_Airlines
             this.kolomDiubah,
             this.kolomUbah});
             this.dgvStatus.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dgvStatus.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvStatus.EnableHeadersVisualStyles = false;
             this.dgvStatus.GridColor = System.Drawing.Color.FromArgb(180, 180, 180);
-            this.dgvStatus.Location = new System.Drawing.Point(25, 78);
+            this.dgvStatus.Location = new System.Drawing.Point(21, 77);
             this.dgvStatus.MultiSelect = false;
             this.dgvStatus.Name = "dgvStatus";
             this.dgvStatus.ReadOnly = true;
             this.dgvStatus.RowHeadersVisible = false;
-            this.dgvStatus.RowTemplate.Height = 38;
+            this.dgvStatus.RowTemplate.Height = 33;
+            this.dgvStatus.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvStatus.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStatus.Size = new System.Drawing.Size(770, 330);
+            this.dgvStatus.Size = new System.Drawing.Size(722, 215);
             this.dgvStatus.TabIndex = 2;
             this.dgvStatus.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStatus_CellClick);
             // 
@@ -208,7 +209,7 @@ namespace Bromo_Airlines
             this.kolomUbah.ReadOnly = true;
             this.kolomUbah.Text = "Ubah";
             this.kolomUbah.UseColumnTextForButtonValue = true;
-            this.kolomUbah.Width = 85;
+            this.kolomUbah.Width = 87;
             // 
             // pnlUbahStatus
             // 
@@ -219,15 +220,15 @@ namespace Bromo_Airlines
             this.pnlUbahStatus.Controls.Add(this.lblDelay);
             this.pnlUbahStatus.Controls.Add(this.cmbStatus);
             this.pnlUbahStatus.Controls.Add(this.lblStatus);
-            this.pnlUbahStatus.Location = new System.Drawing.Point(25, 423);
+            this.pnlUbahStatus.Location = new System.Drawing.Point(21, 414);
             this.pnlUbahStatus.Name = "pnlUbahStatus";
-            this.pnlUbahStatus.Size = new System.Drawing.Size(770, 95);
+            this.pnlUbahStatus.Size = new System.Drawing.Size(722, 95);
             this.pnlUbahStatus.TabIndex = 3;
             this.pnlUbahStatus.Visible = false;
             // 
             // btnSimpan
             // 
-            this.btnSimpan.Location = new System.Drawing.Point(645, 55);
+            this.btnSimpan.Location = new System.Drawing.Point(595, 55);
             this.btnSimpan.Name = "btnSimpan";
             this.btnSimpan.Size = new System.Drawing.Size(110, 30);
             this.btnSimpan.TabIndex = 5;
@@ -237,7 +238,7 @@ namespace Bromo_Airlines
             // 
             // btnBatal
             // 
-            this.btnBatal.Location = new System.Drawing.Point(520, 55);
+            this.btnBatal.Location = new System.Drawing.Point(475, 55);
             this.btnBatal.Name = "btnBatal";
             this.btnBatal.Size = new System.Drawing.Size(110, 30);
             this.btnBatal.TabIndex = 4;
@@ -251,7 +252,7 @@ namespace Bromo_Airlines
             this.mtbDelay.Mask = "00 j\\am 00 menit";
             this.mtbDelay.Name = "mtbDelay";
             this.mtbDelay.PromptChar = '_';
-            this.mtbDelay.Size = new System.Drawing.Size(200, 23);
+            this.mtbDelay.Size = new System.Drawing.Size(200, 31);
             this.mtbDelay.TabIndex = 3;
             this.mtbDelay.Visible = false;
             // 
@@ -260,7 +261,7 @@ namespace Bromo_Airlines
             this.lblDelay.AutoSize = true;
             this.lblDelay.Location = new System.Drawing.Point(285, 16);
             this.lblDelay.Name = "lblDelay";
-            this.lblDelay.Size = new System.Drawing.Size(126, 15);
+            this.lblDelay.Size = new System.Drawing.Size(126, 25);
             this.lblDelay.TabIndex = 2;
             this.lblDelay.Text = "Perkiraan Durasi Delay";
             this.lblDelay.Visible = false;
@@ -270,7 +271,7 @@ namespace Bromo_Airlines
             this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStatus.Location = new System.Drawing.Point(75, 12);
             this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.Size = new System.Drawing.Size(190, 23);
+            this.cmbStatus.Size = new System.Drawing.Size(190, 31);
             this.cmbStatus.TabIndex = 1;
             this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.cmbStatus_SelectedIndexChanged);
             // 
@@ -279,20 +280,17 @@ namespace Bromo_Airlines
             this.lblStatus.AutoSize = true;
             this.lblStatus.Location = new System.Drawing.Point(15, 16);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(42, 15);
+            this.lblStatus.Size = new System.Drawing.Size(56, 25);
             this.lblStatus.TabIndex = 0;
             this.lblStatus.Text = "Status";
             // 
             // FormUbahStatus
             // 
-            this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(790, 545);
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(820, 540);
-            this.Controls.Add(this.pnlUbahStatus);
+            this.ClientSize = new System.Drawing.Size(764, 509);
             this.Controls.Add(this.dgvStatus);
+            this.Controls.Add(this.pnlUbahStatus);
             this.Controls.Add(this.lblDeskripsi);
             this.Controls.Add(this.lblJudul);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);

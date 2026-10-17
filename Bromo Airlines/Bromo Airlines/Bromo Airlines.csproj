@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.2\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.2\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -13,6 +14,8 @@
     <ApplicationIcon>Resources\favicon.ico</ApplicationIcon>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,8 +37,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,6 +64,27 @@
     </Compile>
     <Compile Include="AdminMainForm.Designer.cs">
       <DependentUpon>AdminMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Akun.cs">
+      <DependentUpon>BandaraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bandara.cs">
+      <DependentUpon>BandaraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BandaraModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BandaraModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BandaraModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BandaraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BandaraModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BandaraModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="DaftarAkunForm.cs">
       <SubType>Form</SubType>
@@ -121,17 +154,56 @@
     </Compile>
     <Compile Include="Database\Koneksi.cs" />
     <Compile Include="DataDummy.cs" />
+    <Compile Include="JadwalPenerbangan.cs">
+      <DependentUpon>BandaraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KodePromo.cs">
+      <DependentUpon>BandaraModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Maskapai.cs">
+      <DependentUpon>BandaraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Negara.cs">
+      <DependentUpon>BandaraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PerubahanStatusJadwalPenerbangan.cs">
+      <DependentUpon>BandaraModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="SesiLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StatusPenerbangan.cs">
+      <DependentUpon>BandaraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransaksiDetail.cs">
+      <DependentUpon>BandaraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransaksiHeader.cs">
+      <DependentUpon>BandaraModel.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdminMainForm.resx">
       <DependentUpon>AdminMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerMainForm.resx">
+      <DependentUpon>CustomerMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMasterBandara.resx">
+      <DependentUpon>FormMasterBandara.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMasterJadwal.resx">
+      <DependentUpon>FormMasterJadwal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMasterKodePromo.resx">
+      <DependentUpon>FormMasterKodePromo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMasterMaskapai.resx">
+      <DependentUpon>FormMasterMaskapai.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -142,6 +214,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EntityDeploy Include="BandaraModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BandaraModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="BandaraModel.edmx.diagram">
+      <DependentUpon>BandaraModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -155,5 +235,30 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="BandaraModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <CustomToolNamespace>Bromo_Airlines.Models</CustomToolNamespace>
+      <DependentUpon>BandaraModel.edmx</DependentUpon>
+      <LastGenOutput>BandaraModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="BandaraModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <CustomToolNamespace>Bromo_Airlines.Models</CustomToolNamespace>
+      <DependentUpon>BandaraModel.edmx</DependentUpon>
+      <LastGenOutput>BandaraModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.2\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.2\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.2\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.2\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.2\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.2\build\EntityFramework.targets')" />
 </Project>

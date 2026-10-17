@@ -27,6 +27,15 @@ namespace Bromo_Airlines
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblJudul = new System.Windows.Forms.Label();
             this.lblDeskripsi = new System.Windows.Forms.Label();
             this.dgvKodePromo = new System.Windows.Forms.DataGridView();
@@ -37,31 +46,31 @@ namespace Bromo_Airlines
             this.kolomDeskripsi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kolomUbah = new System.Windows.Forms.DataGridViewButtonColumn();
             this.kolomHapus = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.lblKode = new System.Windows.Forms.Label();
-            this.txtKode = new System.Windows.Forms.TextBox();
-            this.lblBerlakuSampai = new System.Windows.Forms.Label();
-            this.dtpBerlakuSampai = new System.Windows.Forms.DateTimePicker();
-            this.lblPersentase = new System.Windows.Forms.Label();
-            this.nudPersentase = new System.Windows.Forms.NumericUpDown();
-            this.lblMaksimum = new System.Windows.Forms.Label();
-            this.nudMaksimum = new System.Windows.Forms.NumericUpDown();
-            this.lblDeskripsiInput = new System.Windows.Forms.Label();
-            this.txtDeskripsi = new System.Windows.Forms.TextBox();
-            this.btnBatal = new System.Windows.Forms.Button();
             this.btnSimpan = new System.Windows.Forms.Button();
+            this.btnBatal = new System.Windows.Forms.Button();
+            this.txtDeskripsi = new System.Windows.Forms.TextBox();
+            this.lblDeskripsiInput = new System.Windows.Forms.Label();
+            this.nudMaksimum = new System.Windows.Forms.NumericUpDown();
+            this.lblMaksimum = new System.Windows.Forms.Label();
+            this.nudPersentase = new System.Windows.Forms.NumericUpDown();
+            this.lblPersentase = new System.Windows.Forms.Label();
+            this.dtpBerlakuSampai = new System.Windows.Forms.DateTimePicker();
+            this.lblBerlakuSampai = new System.Windows.Forms.Label();
+            this.txtKode = new System.Windows.Forms.TextBox();
+            this.lblKode = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKodePromo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPersentase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMaksimum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPersentase)).BeginInit();
             this.SuspendLayout();
             // 
             // lblJudul
             // 
             this.lblJudul.AutoSize = true;
-            this.lblJudul.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Bold);
+            this.lblJudul.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblJudul.ForeColor = System.Drawing.Color.Black;
-            this.lblJudul.Location = new System.Drawing.Point(25, 12);
+            this.lblJudul.Location = new System.Drawing.Point(21, 17);
             this.lblJudul.Name = "lblJudul";
-            this.lblJudul.Size = new System.Drawing.Size(303, 34);
+            this.lblJudul.Size = new System.Drawing.Size(233, 37);
             this.lblJudul.TabIndex = 0;
             this.lblJudul.Text = "Master Kode Promo";
             // 
@@ -70,9 +79,9 @@ namespace Bromo_Airlines
             this.lblDeskripsi.AutoSize = true;
             this.lblDeskripsi.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblDeskripsi.ForeColor = System.Drawing.Color.Black;
-            this.lblDeskripsi.Location = new System.Drawing.Point(28, 50);
+            this.lblDeskripsi.Location = new System.Drawing.Point(21, 44);
             this.lblDeskripsi.Name = "lblDeskripsi";
-            this.lblDeskripsi.Size = new System.Drawing.Size(307, 15);
+            this.lblDeskripsi.Size = new System.Drawing.Size(438, 25);
             this.lblDeskripsi.TabIndex = 1;
             this.lblDeskripsi.Text = "Semua kode promo yang terdaftar akan muncul di sini";
             // 
@@ -80,17 +89,19 @@ namespace Bromo_Airlines
             // 
             this.dgvKodePromo.AllowUserToAddRows = false;
             this.dgvKodePromo.AllowUserToDeleteRows = false;
-            this.dgvKodePromo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvKodePromo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvKodePromo.BackgroundColor = System.Drawing.Color.White;
-            this.dgvKodePromo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.dgvKodePromo.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvKodePromo.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.White;
-            this.dgvKodePromo.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.dgvKodePromo.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.dgvKodePromo.ColumnHeadersDefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvKodePromo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvKodePromo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvKodePromo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvKodePromo.ColumnHeadersHeight = 32;
             this.dgvKodePromo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.kolomKode,
             this.kolomPersentase,
@@ -99,174 +110,164 @@ namespace Bromo_Airlines
             this.kolomDeskripsi,
             this.kolomUbah,
             this.kolomHapus});
-            this.dgvKodePromo.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvKodePromo.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvKodePromo.EnableHeadersVisualStyles = false;
-            this.dgvKodePromo.GridColor = System.Drawing.Color.FromArgb(180, 180, 180);
-            this.dgvKodePromo.Location = new System.Drawing.Point(25, 78);
+            this.dgvKodePromo.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.dgvKodePromo.Location = new System.Drawing.Point(21, 77);
             this.dgvKodePromo.MultiSelect = false;
             this.dgvKodePromo.Name = "dgvKodePromo";
             this.dgvKodePromo.ReadOnly = true;
             this.dgvKodePromo.RowHeadersVisible = false;
-            this.dgvKodePromo.RowTemplate.Height = 38;
+            this.dgvKodePromo.RowHeadersWidth = 62;
+            this.dgvKodePromo.RowTemplate.Height = 33;
+            this.dgvKodePromo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvKodePromo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvKodePromo.Size = new System.Drawing.Size(770, 300);
+            this.dgvKodePromo.Size = new System.Drawing.Size(722, 215);
             this.dgvKodePromo.TabIndex = 2;
             this.dgvKodePromo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKodePromo_CellClick);
             // 
             // kolomKode
             // 
-            this.kolomKode.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(0, 120, 215);
-            this.kolomKode.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.kolomKode.DefaultCellStyle = dataGridViewCellStyle2;
             this.kolomKode.FillWeight = 20F;
             this.kolomKode.HeaderText = "Kode";
+            this.kolomKode.MinimumWidth = 8;
             this.kolomKode.Name = "kolomKode";
             this.kolomKode.ReadOnly = true;
             // 
             // kolomPersentase
             // 
-            this.kolomPersentase.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
-            this.kolomPersentase.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            this.kolomPersentase.DefaultCellStyle = dataGridViewCellStyle3;
             this.kolomPersentase.FillWeight = 15F;
             this.kolomPersentase.HeaderText = "Diskon (%)";
+            this.kolomPersentase.MinimumWidth = 8;
             this.kolomPersentase.Name = "kolomPersentase";
             this.kolomPersentase.ReadOnly = true;
             // 
             // kolomMaksimum
             // 
-            this.kolomMaksimum.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
-            this.kolomMaksimum.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.kolomMaksimum.DefaultCellStyle = dataGridViewCellStyle4;
             this.kolomMaksimum.FillWeight = 15F;
             this.kolomMaksimum.HeaderText = "Maks. Diskon";
+            this.kolomMaksimum.MinimumWidth = 8;
             this.kolomMaksimum.Name = "kolomMaksimum";
             this.kolomMaksimum.ReadOnly = true;
             // 
             // kolomBerlaku
             // 
-            this.kolomBerlaku.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
-            this.kolomBerlaku.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            this.kolomBerlaku.DefaultCellStyle = dataGridViewCellStyle5;
             this.kolomBerlaku.FillWeight = 16F;
             this.kolomBerlaku.HeaderText = "Berlaku Sampai";
+            this.kolomBerlaku.MinimumWidth = 8;
             this.kolomBerlaku.Name = "kolomBerlaku";
             this.kolomBerlaku.ReadOnly = true;
             // 
             // kolomDeskripsi
             // 
-            this.kolomDeskripsi.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
-            this.kolomDeskripsi.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            this.kolomDeskripsi.DefaultCellStyle = dataGridViewCellStyle6;
             this.kolomDeskripsi.FillWeight = 28F;
             this.kolomDeskripsi.HeaderText = "Deskripsi";
+            this.kolomDeskripsi.MinimumWidth = 8;
             this.kolomDeskripsi.Name = "kolomDeskripsi";
             this.kolomDeskripsi.ReadOnly = true;
             // 
             // kolomUbah
             // 
             this.kolomUbah.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.kolomUbah.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(225, 225, 225);
-            this.kolomUbah.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.kolomUbah.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(5);
-            this.kolomUbah.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(225, 225, 225);
-            this.kolomUbah.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            this.kolomUbah.DefaultCellStyle = dataGridViewCellStyle7;
             this.kolomUbah.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.kolomUbah.HeaderText = "";
+            this.kolomUbah.MinimumWidth = 8;
             this.kolomUbah.Name = "kolomUbah";
             this.kolomUbah.ReadOnly = true;
             this.kolomUbah.Text = "Ubah";
             this.kolomUbah.UseColumnTextForButtonValue = true;
-            this.kolomUbah.Width = 100;
+            this.kolomUbah.Width = 87;
             // 
             // kolomHapus
             // 
             this.kolomHapus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.kolomHapus.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(225, 225, 225);
-            this.kolomHapus.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.kolomHapus.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(5);
-            this.kolomHapus.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(225, 225, 225);
-            this.kolomHapus.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            this.kolomHapus.DefaultCellStyle = dataGridViewCellStyle8;
             this.kolomHapus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.kolomHapus.HeaderText = "";
+            this.kolomHapus.MinimumWidth = 8;
             this.kolomHapus.Name = "kolomHapus";
             this.kolomHapus.ReadOnly = true;
             this.kolomHapus.Text = "Hapus";
             this.kolomHapus.UseColumnTextForButtonValue = true;
-            this.kolomHapus.Width = 100;
+            this.kolomHapus.Width = 87;
             // 
-            // lblKode
+            // btnSimpan
             // 
-            this.lblKode.AutoSize = true;
-            this.lblKode.Location = new System.Drawing.Point(25, 424);
-            this.lblKode.Name = "lblKode";
-            this.lblKode.Size = new System.Drawing.Size(70, 15);
-            this.lblKode.TabIndex = 3;
-            this.lblKode.Text = "Kode Promo";
+            this.btnSimpan.Location = new System.Drawing.Point(564, 456);
+            this.btnSimpan.Name = "btnSimpan";
+            this.btnSimpan.Size = new System.Drawing.Size(98, 28);
+            this.btnSimpan.TabIndex = 14;
+            this.btnSimpan.Text = "Simpan";
+            this.btnSimpan.UseVisualStyleBackColor = true;
+            this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
             // 
-            // txtKode
+            // btnBatal
             // 
-            this.txtKode.Location = new System.Drawing.Point(145, 420);
-            this.txtKode.Name = "txtKode";
-            this.txtKode.Size = new System.Drawing.Size(205, 23);
-            this.txtKode.TabIndex = 4;
+            this.btnBatal.Location = new System.Drawing.Point(454, 456);
+            this.btnBatal.Name = "btnBatal";
+            this.btnBatal.Size = new System.Drawing.Size(98, 28);
+            this.btnBatal.TabIndex = 13;
+            this.btnBatal.Text = "Batal";
+            this.btnBatal.UseVisualStyleBackColor = true;
+            this.btnBatal.Click += new System.EventHandler(this.btnBatal_Click);
             // 
-            // lblBerlakuSampai
+            // txtDeskripsi
             // 
-            this.lblBerlakuSampai.AutoSize = true;
-            this.lblBerlakuSampai.Location = new System.Drawing.Point(25, 460);
-            this.lblBerlakuSampai.Name = "lblBerlakuSampai";
-            this.lblBerlakuSampai.Size = new System.Drawing.Size(92, 15);
-            this.lblBerlakuSampai.TabIndex = 5;
-            this.lblBerlakuSampai.Text = "Berlaku Sampai";
+            this.txtDeskripsi.AcceptsReturn = true;
+            this.txtDeskripsi.Location = new System.Drawing.Point(422, 342);
+            this.txtDeskripsi.Multiline = true;
+            this.txtDeskripsi.Name = "txtDeskripsi";
+            this.txtDeskripsi.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtDeskripsi.Size = new System.Drawing.Size(241, 84);
+            this.txtDeskripsi.TabIndex = 12;
             // 
-            // dtpBerlakuSampai
+            // lblDeskripsiInput
             // 
-            this.dtpBerlakuSampai.CustomFormat = "dd-MM-yyyy";
-            this.dtpBerlakuSampai.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpBerlakuSampai.Location = new System.Drawing.Point(145, 456);
-            this.dtpBerlakuSampai.Name = "dtpBerlakuSampai";
-            this.dtpBerlakuSampai.Size = new System.Drawing.Size(205, 23);
-            this.dtpBerlakuSampai.TabIndex = 6;
-            // 
-            // lblPersentase
-            // 
-            this.lblPersentase.AutoSize = true;
-            this.lblPersentase.Location = new System.Drawing.Point(25, 496);
-            this.lblPersentase.Name = "lblPersentase";
-            this.lblPersentase.Size = new System.Drawing.Size(112, 15);
-            this.lblPersentase.TabIndex = 7;
-            this.lblPersentase.Text = "Persentase Diskon";
-            // 
-            // nudPersentase
-            // 
-            this.nudPersentase.Location = new System.Drawing.Point(145, 492);
-            this.nudPersentase.Maximum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.nudPersentase.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudPersentase.Name = "nudPersentase";
-            this.nudPersentase.Size = new System.Drawing.Size(205, 23);
-            this.nudPersentase.TabIndex = 8;
-            this.nudPersentase.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // lblMaksimum
-            // 
-            this.lblMaksimum.AutoSize = true;
-            this.lblMaksimum.Location = new System.Drawing.Point(25, 532);
-            this.lblMaksimum.Name = "lblMaksimum";
-            this.lblMaksimum.Size = new System.Drawing.Size(104, 15);
-            this.lblMaksimum.TabIndex = 9;
-            this.lblMaksimum.Text = "Maksimum Diskon";
+            this.lblDeskripsiInput.AutoSize = true;
+            this.lblDeskripsiInput.Location = new System.Drawing.Point(323, 345);
+            this.lblDeskripsiInput.Name = "lblDeskripsiInput";
+            this.lblDeskripsiInput.Size = new System.Drawing.Size(84, 25);
+            this.lblDeskripsiInput.TabIndex = 11;
+            this.lblDeskripsiInput.Text = "Deskripsi";
             // 
             // nudMaksimum
             // 
-            this.nudMaksimum.Location = new System.Drawing.Point(145, 528);
+            this.nudMaksimum.Location = new System.Drawing.Point(107, 414);
             this.nudMaksimum.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -278,7 +279,7 @@ namespace Bromo_Airlines
             0,
             0});
             this.nudMaksimum.Name = "nudMaksimum";
-            this.nudMaksimum.Size = new System.Drawing.Size(205, 23);
+            this.nudMaksimum.Size = new System.Drawing.Size(193, 31);
             this.nudMaksimum.TabIndex = 10;
             this.nudMaksimum.ThousandsSeparator = true;
             this.nudMaksimum.Value = new decimal(new int[] {
@@ -287,53 +288,81 @@ namespace Bromo_Airlines
             0,
             0});
             // 
-            // lblDeskripsiInput
+            // lblMaksimum
             // 
-            this.lblDeskripsiInput.AutoSize = true;
-            this.lblDeskripsiInput.Location = new System.Drawing.Point(375, 424);
-            this.lblDeskripsiInput.Name = "lblDeskripsiInput";
-            this.lblDeskripsiInput.Size = new System.Drawing.Size(60, 15);
-            this.lblDeskripsiInput.TabIndex = 11;
-            this.lblDeskripsiInput.Text = "Deskripsi";
+            this.lblMaksimum.AutoSize = true;
+            this.lblMaksimum.Location = new System.Drawing.Point(21, 417);
+            this.lblMaksimum.Name = "lblMaksimum";
+            this.lblMaksimum.Size = new System.Drawing.Size(160, 25);
+            this.lblMaksimum.TabIndex = 9;
+            this.lblMaksimum.Text = "Maksimum Diskon";
             // 
-            // txtDeskripsi
+            // nudPersentase
             // 
-            this.txtDeskripsi.AcceptsReturn = true;
-            this.txtDeskripsi.Location = new System.Drawing.Point(445, 420);
-            this.txtDeskripsi.Multiline = true;
-            this.txtDeskripsi.Name = "txtDeskripsi";
-            this.txtDeskripsi.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDeskripsi.Size = new System.Drawing.Size(295, 60);
-            this.txtDeskripsi.TabIndex = 12;
+            this.nudPersentase.Location = new System.Drawing.Point(107, 383);
+            this.nudPersentase.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudPersentase.Name = "nudPersentase";
+            this.nudPersentase.Size = new System.Drawing.Size(193, 31);
+            this.nudPersentase.TabIndex = 8;
+            this.nudPersentase.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // btnBatal
+            // lblPersentase
             // 
-            this.btnBatal.Location = new System.Drawing.Point(505, 500);
-            this.btnBatal.Name = "btnBatal";
-            this.btnBatal.Size = new System.Drawing.Size(110, 30);
-            this.btnBatal.TabIndex = 13;
-            this.btnBatal.Text = "Batal";
-            this.btnBatal.UseVisualStyleBackColor = true;
-            this.btnBatal.Click += new System.EventHandler(this.btnBatal_Click);
+            this.lblPersentase.AutoSize = true;
+            this.lblPersentase.Location = new System.Drawing.Point(21, 386);
+            this.lblPersentase.Name = "lblPersentase";
+            this.lblPersentase.Size = new System.Drawing.Size(155, 25);
+            this.lblPersentase.TabIndex = 7;
+            this.lblPersentase.Text = "Persentase Diskon";
             // 
-            // btnSimpan
+            // dtpBerlakuSampai
             // 
-            this.btnSimpan.Location = new System.Drawing.Point(630, 500);
-            this.btnSimpan.Name = "btnSimpan";
-            this.btnSimpan.Size = new System.Drawing.Size(110, 30);
-            this.btnSimpan.TabIndex = 14;
-            this.btnSimpan.Text = "Simpan";
-            this.btnSimpan.UseVisualStyleBackColor = true;
-            this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
+            this.dtpBerlakuSampai.CustomFormat = "dd-MM-yyyy";
+            this.dtpBerlakuSampai.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpBerlakuSampai.Location = new System.Drawing.Point(107, 352);
+            this.dtpBerlakuSampai.Name = "dtpBerlakuSampai";
+            this.dtpBerlakuSampai.Size = new System.Drawing.Size(193, 31);
+            this.dtpBerlakuSampai.TabIndex = 6;
+            // 
+            // lblBerlakuSampai
+            // 
+            this.lblBerlakuSampai.AutoSize = true;
+            this.lblBerlakuSampai.Location = new System.Drawing.Point(21, 355);
+            this.lblBerlakuSampai.Name = "lblBerlakuSampai";
+            this.lblBerlakuSampai.Size = new System.Drawing.Size(133, 25);
+            this.lblBerlakuSampai.TabIndex = 5;
+            this.lblBerlakuSampai.Text = "Berlaku Sampai";
+            // 
+            // txtKode
+            // 
+            this.txtKode.Location = new System.Drawing.Point(107, 321);
+            this.txtKode.Name = "txtKode";
+            this.txtKode.Size = new System.Drawing.Size(193, 31);
+            this.txtKode.TabIndex = 4;
+            // 
+            // lblKode
+            // 
+            this.lblKode.AutoSize = true;
+            this.lblKode.Location = new System.Drawing.Point(21, 324);
+            this.lblKode.Name = "lblKode";
+            this.lblKode.Size = new System.Drawing.Size(112, 25);
+            this.lblKode.TabIndex = 3;
+            this.lblKode.Text = "Kode Promo";
             // 
             // FormMasterKodePromo
             // 
-            this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(790, 560);
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(820, 575);
+            this.ClientSize = new System.Drawing.Size(764, 509);
+            this.Controls.Add(this.dgvKodePromo);
             this.Controls.Add(this.btnSimpan);
             this.Controls.Add(this.btnBatal);
             this.Controls.Add(this.txtDeskripsi);
@@ -346,7 +375,6 @@ namespace Bromo_Airlines
             this.Controls.Add(this.lblBerlakuSampai);
             this.Controls.Add(this.txtKode);
             this.Controls.Add(this.lblKode);
-            this.Controls.Add(this.dgvKodePromo);
             this.Controls.Add(this.lblDeskripsi);
             this.Controls.Add(this.lblJudul);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -354,8 +382,8 @@ namespace Bromo_Airlines
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Master Kode Promo";
             ((System.ComponentModel.ISupportInitialize)(this.dgvKodePromo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPersentase)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMaksimum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPersentase)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

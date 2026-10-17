@@ -118,6 +118,7 @@ namespace Bromo_Airlines
             Panel item = new Panel();
             item.Dock = DockStyle.Top;
             item.Height = 50;
+            item.Size = new Size(220, 50);
             item.BackColor = Color.White;
 
             // Ikon: posisi tetap, tidak bergantung lebar sidebar
@@ -135,7 +136,7 @@ namespace Bromo_Airlines
             lblTeks.ForeColor = warnaTeksNormal[index];
             lblTeks.TextAlign = ContentAlignment.MiddleLeft;
             lblTeks.Location = new Point(50, 0);
-            lblTeks.Size = new Size(190, 50);
+            lblTeks.Size = new Size(170, 50);
             lblTeks.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
                 | AnchorStyles.Left | AnchorStyles.Right;
             lblTeks.BackColor = Color.Transparent;
@@ -242,7 +243,7 @@ namespace Bromo_Airlines
             }
             else
             {
-                panelMenu.Width = 250;
+                panelMenu.Width = 220;
                 for (int i = 0; i < daftarTeks.Length; i++)
                 {
                     daftarTeks[i].Visible = true;
@@ -260,7 +261,8 @@ namespace Bromo_Airlines
             // Siapkan form supaya tampil di dalam panel
             form.TopLevel = false;
             form.FormBorderStyle = FormBorderStyle.None;
-            form.Dock = DockStyle.Fill;
+            form.Location = new Point(0, 0);
+            form.Size = new Size(764, 509);
 
             // Tambahkan form ke panel, lalu tampilkan
             panelKonten.Controls.Add(form);

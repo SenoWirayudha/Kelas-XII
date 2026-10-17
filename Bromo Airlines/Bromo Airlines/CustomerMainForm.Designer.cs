@@ -57,8 +57,8 @@ namespace Bromo_Airlines
             ((System.ComponentModel.ISupportInitialize)(this.picIkonTujuan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picIkonTanggal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picIkonPenumpang)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMountain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPenumpang)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMountain)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlHeader
@@ -115,7 +115,7 @@ namespace Bromo_Airlines
             this.lblHalo.ForeColor = System.Drawing.Color.Black;
             this.lblHalo.Location = new System.Drawing.Point(25, 105);
             this.lblHalo.Name = "lblHalo";
-            this.lblHalo.Size = new System.Drawing.Size(77, 37);
+            this.lblHalo.Size = new System.Drawing.Size(124, 54);
             this.lblHalo.TabIndex = 1;
             this.lblHalo.Text = "Halo!";
             // 
@@ -126,7 +126,7 @@ namespace Bromo_Airlines
             this.lblSapaan.ForeColor = System.Drawing.Color.Black;
             this.lblSapaan.Location = new System.Drawing.Point(27, 145);
             this.lblSapaan.Name = "lblSapaan";
-            this.lblSapaan.Size = new System.Drawing.Size(225, 15);
+            this.lblSapaan.Size = new System.Drawing.Size(251, 25);
             this.lblSapaan.TabIndex = 2;
             this.lblSapaan.Text = "Mau terbang ke mana hari ini?";
             // 
@@ -146,7 +146,7 @@ namespace Bromo_Airlines
             this.lblBerangkatDari.ForeColor = System.Drawing.Color.Black;
             this.lblBerangkatDari.Location = new System.Drawing.Point(53, 183);
             this.lblBerangkatDari.Name = "lblBerangkatDari";
-            this.lblBerangkatDari.Size = new System.Drawing.Size(96, 15);
+            this.lblBerangkatDari.Size = new System.Drawing.Size(128, 25);
             this.lblBerangkatDari.TabIndex = 4;
             this.lblBerangkatDari.Text = "Berangkat Dari";
             // 
@@ -157,7 +157,7 @@ namespace Bromo_Airlines
             this.cmbAsal.FormattingEnabled = true;
             this.cmbAsal.Location = new System.Drawing.Point(53, 202);
             this.cmbAsal.Name = "cmbAsal";
-            this.cmbAsal.Size = new System.Drawing.Size(215, 23);
+            this.cmbAsal.Size = new System.Drawing.Size(215, 33);
             this.cmbAsal.TabIndex = 5;
             // 
             // picIkonTujuan
@@ -176,7 +176,7 @@ namespace Bromo_Airlines
             this.lblTujuan.ForeColor = System.Drawing.Color.Black;
             this.lblTujuan.Location = new System.Drawing.Point(328, 183);
             this.lblTujuan.Name = "lblTujuan";
-            this.lblTujuan.Size = new System.Drawing.Size(54, 15);
+            this.lblTujuan.Size = new System.Drawing.Size(64, 25);
             this.lblTujuan.TabIndex = 7;
             this.lblTujuan.Text = "Tujuan";
             // 
@@ -187,7 +187,7 @@ namespace Bromo_Airlines
             this.cmbTujuan.FormattingEnabled = true;
             this.cmbTujuan.Location = new System.Drawing.Point(328, 202);
             this.cmbTujuan.Name = "cmbTujuan";
-            this.cmbTujuan.Size = new System.Drawing.Size(215, 23);
+            this.cmbTujuan.Size = new System.Drawing.Size(215, 33);
             this.cmbTujuan.TabIndex = 8;
             // 
             // picIkonTanggal
@@ -206,7 +206,7 @@ namespace Bromo_Airlines
             this.lblTanggalBerangkat.ForeColor = System.Drawing.Color.Black;
             this.lblTanggalBerangkat.Location = new System.Drawing.Point(53, 243);
             this.lblTanggalBerangkat.Name = "lblTanggalBerangkat";
-            this.lblTanggalBerangkat.Size = new System.Drawing.Size(116, 15);
+            this.lblTanggalBerangkat.Size = new System.Drawing.Size(157, 25);
             this.lblTanggalBerangkat.TabIndex = 10;
             this.lblTanggalBerangkat.Text = "Tanggal Berangkat";
             // 
@@ -217,7 +217,7 @@ namespace Bromo_Airlines
             this.dtpTanggal.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpTanggal.Location = new System.Drawing.Point(53, 262);
             this.dtpTanggal.Name = "dtpTanggal";
-            this.dtpTanggal.Size = new System.Drawing.Size(215, 23);
+            this.dtpTanggal.Size = new System.Drawing.Size(215, 31);
             this.dtpTanggal.TabIndex = 11;
             // 
             // picIkonPenumpang
@@ -236,7 +236,7 @@ namespace Bromo_Airlines
             this.lblPenumpang.ForeColor = System.Drawing.Color.Black;
             this.lblPenumpang.Location = new System.Drawing.Point(328, 243);
             this.lblPenumpang.Name = "lblPenumpang";
-            this.lblPenumpang.Size = new System.Drawing.Size(114, 15);
+            this.lblPenumpang.Size = new System.Drawing.Size(167, 25);
             this.lblPenumpang.TabIndex = 13;
             this.lblPenumpang.Text = "Jumlah Penumpang";
             // 
@@ -244,18 +244,13 @@ namespace Bromo_Airlines
             // 
             this.nudPenumpang.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.nudPenumpang.Location = new System.Drawing.Point(328, 262);
-            this.nudPenumpang.Maximum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
             this.nudPenumpang.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.nudPenumpang.Name = "nudPenumpang";
-            this.nudPenumpang.Size = new System.Drawing.Size(215, 23);
+            this.nudPenumpang.Size = new System.Drawing.Size(215, 31);
             this.nudPenumpang.TabIndex = 14;
             this.nudPenumpang.Value = new decimal(new int[] {
             1,
@@ -278,16 +273,16 @@ namespace Bromo_Airlines
             // 
             this.picMountain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.picMountain.Enabled = false;
-            this.picMountain.Location = new System.Drawing.Point(555, 333);
+            this.picMountain.Location = new System.Drawing.Point(521, 310);
             this.picMountain.Name = "picMountain";
-            this.picMountain.Size = new System.Drawing.Size(200, 77);
+            this.picMountain.Size = new System.Drawing.Size(239, 115);
             this.picMountain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picMountain.TabIndex = 16;
             this.picMountain.TabStop = false;
             // 
             // CustomerMainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
@@ -323,8 +318,8 @@ namespace Bromo_Airlines
             ((System.ComponentModel.ISupportInitialize)(this.picIkonTujuan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picIkonTanggal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picIkonPenumpang)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMountain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPenumpang)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMountain)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
