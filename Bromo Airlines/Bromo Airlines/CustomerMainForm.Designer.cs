@@ -75,6 +75,7 @@ namespace Bromo_Airlines
             // 
             // picHeaderLogo
             // 
+            this.picHeaderLogo.Image = global::Bromo_Airlines.Properties.Resources.logo_header;
             this.picHeaderLogo.Location = new System.Drawing.Point(20, 15);
             this.picHeaderLogo.Name = "picHeaderLogo";
             this.picHeaderLogo.Size = new System.Drawing.Size(191, 60);
@@ -86,26 +87,26 @@ namespace Bromo_Airlines
             // 
             this.picTiketSaya.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picTiketSaya.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picTiketSaya.Image = global::Bromo_Airlines.Properties.Resources.ic_tiket;
             this.picTiketSaya.Location = new System.Drawing.Point(659, 31);
             this.picTiketSaya.Name = "picTiketSaya";
             this.picTiketSaya.Size = new System.Drawing.Size(28, 28);
             this.picTiketSaya.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picTiketSaya.TabIndex = 1;
             this.picTiketSaya.TabStop = false;
-            this.toolTip1.SetToolTip(this.picTiketSaya, "Tiket Saya");
             this.picTiketSaya.Click += new System.EventHandler(this.picTiketSaya_Click);
             // 
             // picLogout
             // 
             this.picLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picLogout.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picLogout.Image = global::Bromo_Airlines.Properties.Resources.ic_logout_putih;
             this.picLogout.Location = new System.Drawing.Point(712, 31);
             this.picLogout.Name = "picLogout";
             this.picLogout.Size = new System.Drawing.Size(28, 28);
             this.picLogout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picLogout.TabIndex = 2;
             this.picLogout.TabStop = false;
-            this.toolTip1.SetToolTip(this.picLogout, "Logout");
             this.picLogout.Click += new System.EventHandler(this.picLogout_Click);
             // 
             // lblHalo
@@ -132,6 +133,7 @@ namespace Bromo_Airlines
             // 
             // picIkonBerangkat
             // 
+            this.picIkonBerangkat.Image = global::Bromo_Airlines.Properties.Resources.ic_berangkat;
             this.picIkonBerangkat.Location = new System.Drawing.Point(25, 180);
             this.picIkonBerangkat.Name = "picIkonBerangkat";
             this.picIkonBerangkat.Size = new System.Drawing.Size(20, 20);
@@ -162,6 +164,7 @@ namespace Bromo_Airlines
             // 
             // picIkonTujuan
             // 
+            this.picIkonTujuan.Image = global::Bromo_Airlines.Properties.Resources.ic_tujuan;
             this.picIkonTujuan.Location = new System.Drawing.Point(300, 180);
             this.picIkonTujuan.Name = "picIkonTujuan";
             this.picIkonTujuan.Size = new System.Drawing.Size(20, 20);
@@ -192,6 +195,7 @@ namespace Bromo_Airlines
             // 
             // picIkonTanggal
             // 
+            this.picIkonTanggal.Image = global::Bromo_Airlines.Properties.Resources.ic_jadwal_aktif;
             this.picIkonTanggal.Location = new System.Drawing.Point(25, 240);
             this.picIkonTanggal.Name = "picIkonTanggal";
             this.picIkonTanggal.Size = new System.Drawing.Size(20, 20);
@@ -222,6 +226,7 @@ namespace Bromo_Airlines
             // 
             // picIkonPenumpang
             // 
+            this.picIkonPenumpang.Image = global::Bromo_Airlines.Properties.Resources.ic_penumpang;
             this.picIkonPenumpang.Location = new System.Drawing.Point(300, 240);
             this.picIkonPenumpang.Name = "picIkonPenumpang";
             this.picIkonPenumpang.Size = new System.Drawing.Size(20, 20);
@@ -273,9 +278,10 @@ namespace Bromo_Airlines
             // 
             this.picMountain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.picMountain.Enabled = false;
-            this.picMountain.Location = new System.Drawing.Point(521, 310);
+            this.picMountain.Image = global::Bromo_Airlines.Properties.Resources.gambar_mountain;
+            this.picMountain.Location = new System.Drawing.Point(485, 299);
             this.picMountain.Name = "picMountain";
-            this.picMountain.Size = new System.Drawing.Size(239, 115);
+            this.picMountain.Size = new System.Drawing.Size(286, 141);
             this.picMountain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picMountain.TabIndex = 16;
             this.picMountain.TabStop = false;
@@ -305,6 +311,7 @@ namespace Bromo_Airlines
             this.Controls.Add(this.lblHalo);
             this.Controls.Add(this.pnlHeader);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Icon = global::Bromo_Airlines.Properties.Resources.favicon;
             this.MinimumSize = new System.Drawing.Size(700, 400);
             this.Name = "CustomerMainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

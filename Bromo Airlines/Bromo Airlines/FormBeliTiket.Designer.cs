@@ -65,6 +65,7 @@ namespace Bromo_Airlines
             this.btnKembali.Location = new System.Drawing.Point(20, 20);
             this.btnKembali.Name = "btnKembali";
             this.btnKembali.Size = new System.Drawing.Size(20, 20);
+            this.btnKembali.Image = global::Bromo_Airlines.Properties.Resources.ic_kembali;
             this.btnKembali.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnKembali.TabIndex = 0;
             this.btnKembali.TabStop = false;
@@ -173,6 +174,7 @@ namespace Bromo_Airlines
             this.picIkonKalender.Location = new System.Drawing.Point(16, 118);
             this.picIkonKalender.Name = "picIkonKalender";
             this.picIkonKalender.Size = new System.Drawing.Size(16, 16);
+            this.picIkonKalender.Image = global::Bromo_Airlines.Properties.Resources.ic_kalender;
             this.picIkonKalender.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picIkonKalender.TabIndex = 5;
             this.picIkonKalender.TabStop = false;
@@ -193,6 +195,7 @@ namespace Bromo_Airlines
             this.picIkonJam.Location = new System.Drawing.Point(16, 144);
             this.picIkonJam.Name = "picIkonJam";
             this.picIkonJam.Size = new System.Drawing.Size(16, 16);
+            this.picIkonJam.Image = global::Bromo_Airlines.Properties.Resources.ic_jam;
             this.picIkonJam.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picIkonJam.TabIndex = 7;
             this.picIkonJam.TabStop = false;
@@ -213,6 +216,7 @@ namespace Bromo_Airlines
             this.picIkonGrup.Location = new System.Drawing.Point(16, 170);
             this.picIkonGrup.Name = "picIkonGrup";
             this.picIkonGrup.Size = new System.Drawing.Size(16, 16);
+            this.picIkonGrup.Image = global::Bromo_Airlines.Properties.Resources.ic_grup;
             this.picIkonGrup.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picIkonGrup.TabIndex = 9;
             this.picIkonGrup.TabStop = false;
@@ -343,6 +347,7 @@ namespace Bromo_Airlines
             this.Controls.Add(this.pnlKanan);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.MinimumSize = new System.Drawing.Size(800, 480);
+            this.Icon = global::Bromo_Airlines.Properties.Resources.favicon;
             this.Name = "FormBeliTiket";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bromo Airlines - Beli Tiket";

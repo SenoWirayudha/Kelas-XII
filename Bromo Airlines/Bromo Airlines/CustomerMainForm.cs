@@ -16,20 +16,6 @@ namespace Bromo_Airlines
         {
             InitializeComponent();
 
-            // Ikon jendela dari resource
-            this.Icon = Properties.Resources.favicon;
-
-            // Gambar dari resource (semua diisi di sini,
-            // bukan di InitializeComponent supaya designer tetap aman)
-            picHeaderLogo.Image = Properties.Resources.logo_header;
-            picTiketSaya.Image = Properties.Resources.ic_tiket;
-            picLogout.Image = Properties.Resources.ic_logout_putih;
-            picIkonBerangkat.Image = Properties.Resources.ic_berangkat;
-            picIkonTujuan.Image = Properties.Resources.ic_tujuan;
-            picIkonTanggal.Image = Properties.Resources.ic_jadwal_aktif;
-            picIkonPenumpang.Image = Properties.Resources.ic_penumpang;
-            picMountain.Image = Properties.Resources.gambar_mountain;
-
             // Ilustrasi gunung selalu di paling belakang
             picMountain.SendToBack();
 

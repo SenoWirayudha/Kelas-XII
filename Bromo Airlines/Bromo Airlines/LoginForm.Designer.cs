@@ -43,6 +43,7 @@ namespace Bromo_Airlines
             this.picLogo.Location = new System.Drawing.Point(50, 10);
             this.picLogo.Name = "picLogo";
             this.picLogo.Size = new System.Drawing.Size(300, 120);
+            this.picLogo.Image = global::Bromo_Airlines.Properties.Resources.logo_login;
             this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picLogo.TabIndex = 0;
             this.picLogo.TabStop = false;
@@ -127,6 +128,7 @@ namespace Bromo_Airlines
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginForm_FormClosing);
+            this.Icon = global::Bromo_Airlines.Properties.Resources.favicon;
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bromo Airlines - Login";

@@ -15,10 +15,6 @@ namespace Bromo_Airlines
 
             // Simpan referensi ke diri sendiri
             formLoginUtama = this;
-
-            // Ikon jendela + logo dari resource
-            this.Icon = Properties.Resources.favicon;
-            picLogo.Image = Properties.Resources.logo_login;
         }
 
         // Ketika tombol Login ditekan

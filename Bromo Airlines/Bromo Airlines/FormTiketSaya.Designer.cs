@@ -49,6 +49,7 @@ namespace Bromo_Airlines
             this.btnKembali.Location = new System.Drawing.Point(15, 15);
             this.btnKembali.Name = "btnKembali";
             this.btnKembali.Size = new System.Drawing.Size(20, 20);
+            this.btnKembali.Image = global::Bromo_Airlines.Properties.Resources.ic_kembali;
             this.btnKembali.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnKembali.TabIndex = 0;
             this.btnKembali.TabStop = false;
@@ -203,6 +204,7 @@ namespace Bromo_Airlines
             this.Controls.Add(this.btnKembali);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.MinimumSize = new System.Drawing.Size(780, 360);
+            this.Icon = global::Bromo_Airlines.Properties.Resources.favicon;
             this.Name = "FormTiketSaya";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bromo Airlines - Tiket Saya";

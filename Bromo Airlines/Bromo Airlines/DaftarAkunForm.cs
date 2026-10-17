@@ -13,10 +13,6 @@ namespace Bromo_Airlines
         public DaftarAkunForm()
         {
             InitializeComponent();
-
-            // Ikon jendela + logo dari resource
-            this.Icon = Properties.Resources.favicon;
-            picLogo.Image = Properties.Resources.logo_register;
         }
 
         // Ketika tombol Daftar ditekan

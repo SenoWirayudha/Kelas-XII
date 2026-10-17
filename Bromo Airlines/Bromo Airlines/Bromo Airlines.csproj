@@ -169,6 +169,7 @@
     <Compile Include="Maskapai.cs">
       <DependentUpon>BandaraModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="NavigasiAdmin.cs" />
     <Compile Include="Negara.cs">
       <DependentUpon>BandaraModel.tt</DependentUpon>
     </Compile>

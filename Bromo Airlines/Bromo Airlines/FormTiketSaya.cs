@@ -14,13 +14,6 @@ namespace Bromo_Airlines
         public FormTiketSaya()
         {
             InitializeComponent();
-
-            // Ikon jendela dari resource
-            this.Icon = Properties.Resources.favicon;
-
-            // Ikon tombol kembali (diisi di sini, bukan di InitializeComponent,
-            // supaya designer tidak membaca resource)
-            btnKembali.Image = Properties.Resources.ic_kembali;
         }
 
         // Diisi saat form dibuka (bukan di InitializeComponent,
