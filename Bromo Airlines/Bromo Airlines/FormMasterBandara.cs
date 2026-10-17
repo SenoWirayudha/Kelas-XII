@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Bromo_Airlines
 {
     // Form Master Bandara: menampilkan, menambah, mengubah, dan menghapus bandara.
-    // Data masih disimpan di DataDummy (di memori).
+    // Data diambil dari database SQL Server lewat Entity Framework.
     public partial class FormMasterBandara : Form
     {
         // ID bandara yang sedang diubah. Kalau 0 = mode tambah biasa.
@@ -22,15 +23,8 @@ namespace Bromo_Airlines
         {
             InitializeComponent();
 
-            // Isi ComboBox Negara urut A-Z
-            List<Negara> negaraUrut = new List<Negara>(DataDummy.daftarNegara);
-            negaraUrut.Sort(delegate (Negara a, Negara b)
-            {
-                return string.Compare(a.Nama, b.Nama, StringComparison.OrdinalIgnoreCase);
-            });
-            cmbNegara.DataSource = negaraUrut;
-            cmbNegara.DisplayMember = "Nama";
-            cmbNegara.ValueMember = "Id";
+            // Isi ComboBox Negara dari database (urut A-Z)
+            IsiComboNegara();
 
             // Tampilkan data bandara di grid
             MuatGrid();
@@ -162,63 +156,60 @@ namespace Bromo_Airlines
             }
         }
 
-        // Mengurutkan daftar bandara berdasarkan nama A-Z (tidak peka huruf besar/kecil)
-        private List<Bandara> BandaraUrut()
+        // ====== DATA (Entity Framework) ======
+
+        // Mengisi ComboBox Negara dari tabel Negara, urut A-Z
+        private void IsiComboNegara()
         {
-            List<Bandara> hasil = new List<Bandara>(DataDummy.daftarBandara);
-            hasil.Sort(delegate (Bandara a, Bandara b)
+            try
             {
-                return string.Compare(a.Nama, b.Nama, StringComparison.OrdinalIgnoreCase);
-            });
-            return hasil;
+                using (Models.BandaraEntities db = new Models.BandaraEntities())
+                {
+                    List<Models.Negara> daftarNegara = db.Negara.OrderBy(n => n.Nama).ToList();
+                    cmbNegara.DataSource = daftarNegara;
+                    cmbNegara.DisplayMember = "Nama";
+                    cmbNegara.ValueMember = "ID";
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Tidak dapat terhubung ke database.", "Master Bandara",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        // Mengisi ulang grid dari data dummy
+        // Mengisi ulang grid dari tabel Bandara (urut Nama A-Z)
         private void MuatGrid()
         {
             dgvBandara.Rows.Clear();
 
-            List<Bandara> daftar = BandaraUrut();
-            for (int i = 0; i < daftar.Count; i++)
+            try
             {
-                Bandara bandara = daftar[i];
-                dgvBandara.Rows.Add(
-                    bandara.Nama,
-                    bandara.KodeIATA,
-                    bandara.Kota,
-                    NamaNegara(bandara.NegaraId),
-                    bandara.JumlahTerminal,
-                    bandara.Alamat);
-
-                // Simpan ID bandara di baris, supaya tahu baris mana yang diklik
-                dgvBandara.Rows[i].Tag = bandara.ID;
-            }
-        }
-
-        // Mencari nama negara berdasarkan ID
-        private string NamaNegara(int negaraId)
-        {
-            for (int i = 0; i < DataDummy.daftarNegara.Count; i++)
-            {
-                if (DataDummy.daftarNegara[i].Id == negaraId)
+                using (Models.BandaraEntities db = new Models.BandaraEntities())
                 {
-                    return DataDummy.daftarNegara[i].Nama;
+                    List<Models.Bandara> daftar = db.Bandara.OrderBy(b => b.Nama).ToList();
+
+                    for (int i = 0; i < daftar.Count; i++)
+                    {
+                        Models.Bandara bandara = daftar[i];
+                        dgvBandara.Rows.Add(
+                            bandara.Nama,
+                            bandara.KodeIATA,
+                            bandara.Kota,
+                            bandara.Negara.Nama,
+                            bandara.JumlahTerminal,
+                            bandara.Alamat);
+
+                        // Simpan ID bandara di baris, supaya tahu baris mana yang diklik
+                        dgvBandara.Rows[i].Tag = bandara.ID;
+                    }
                 }
             }
-            return "";
-        }
-
-        // Mencari data bandara berdasarkan ID. Kalau tidak ketemu = null.
-        private Bandara CariBandara(int id)
-        {
-            for (int i = 0; i < DataDummy.daftarBandara.Count; i++)
+            catch
             {
-                if (DataDummy.daftarBandara[i].ID == id)
-                {
-                    return DataDummy.daftarBandara[i];
-                }
+                MessageBox.Show("Tidak dapat terhubung ke database.", "Master Bandara",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return null;
         }
 
         // Mengecek apakah sebuah string hanya berisi huruf A-Z
@@ -258,19 +249,33 @@ namespace Bromo_Airlines
         // Memuat data bandara ke kolom input (masuk mode ubah)
         private void MuatKeInput(int id)
         {
-            Bandara bandara = CariBandara(id);
-            if (bandara == null)
+            try
             {
-                return;
-            }
+                using (Models.BandaraEntities db = new Models.BandaraEntities())
+                {
+                    Models.Bandara bandara = db.Bandara.FirstOrDefault(b => b.ID == id);
+                    if (bandara == null)
+                    {
+                        return;
+                    }
 
-            idSedangDiubah = id;
-            txtNama.Text = bandara.Nama;
-            txtKodeIATA.Text = bandara.KodeIATA;
-            txtKota.Text = bandara.Kota;
-            cmbNegara.SelectedValue = bandara.NegaraId;
-            nudJumlahTerminal.Value = bandara.JumlahTerminal;
-            txtAlamat.Text = bandara.Alamat;
+                    idSedangDiubah = id;
+                    txtNama.Text = bandara.Nama;
+                    txtKodeIATA.Text = bandara.KodeIATA;
+                    txtKota.Text = bandara.Kota;
+                    cmbNegara.SelectedValue = bandara.NegaraID;
+                    nudJumlahTerminal.Value = bandara.JumlahTerminal;
+                    txtAlamat.Text = bandara.Alamat;
+
+                    // Teks tombol menandai sedang mode ubah
+                    btnSimpan.Text = "Simpan Perubahan";
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Tidak dapat terhubung ke database.", "Master Bandara",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         // Tombol Simpan: mode tambah kalau idSedangDiubah = 0, mode ubah kalau tidak
@@ -281,117 +286,159 @@ namespace Bromo_Airlines
             string kodeIata = txtKodeIATA.Text.Trim().ToUpper();
             string kota = txtKota.Text.Trim();
             string alamat = txtAlamat.Text.Trim();
-            Negara negaraDipilih = cmbNegara.SelectedItem as Negara;
+            Models.Negara negaraDipilih = cmbNegara.SelectedItem as Models.Negara;
 
-            // Kumpulkan semua kesalahan dulu, supaya tampil bersamaan
-            List<string> daftarError = new List<string>();
+            // Validasi dicek berurutan.
+            // Berhenti di error pertama dan tampilkan satu pesan saja.
 
+            // 1. Semua input wajib diisi
             if (nama == "")
             {
-                daftarError.Add("Nama bandara wajib diisi.");
+                MessageBox.Show("Nama bandara wajib diisi.", "Master Bandara",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNama.Focus();
+                return;
             }
 
-            // Kode IATA harus tepat 3 huruf A-Z
             if (kodeIata == "")
             {
-                daftarError.Add("Kode IATA wajib diisi.");
-            }
-            else if (kodeIata.Length != 3 || HanyaHuruf(kodeIata) == false)
-            {
-                daftarError.Add("Kode IATA harus tepat 3 huruf (A-Z), tidak boleh angka atau simbol.");
+                MessageBox.Show("Kode IATA wajib diisi.", "Master Bandara",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtKodeIATA.Focus();
+                return;
             }
 
             if (kota == "")
             {
-                daftarError.Add("Kota wajib diisi.");
+                MessageBox.Show("Kota wajib diisi.", "Master Bandara",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtKota.Focus();
+                return;
             }
 
             if (negaraDipilih == null)
             {
-                daftarError.Add("Negara harus dipilih.");
-            }
-
-            if (nudJumlahTerminal.Value < 1)
-            {
-                daftarError.Add("Jumlah terminal minimal 1.");
+                MessageBox.Show("Negara harus dipilih.", "Master Bandara",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cmbNegara.Focus();
+                return;
             }
 
             if (alamat == "")
             {
-                daftarError.Add("Alamat wajib diisi.");
-            }
-
-            // Nama harus unik (bandara lain saja, tidak menghitung dirinya sendiri)
-            if (nama != "")
-            {
-                for (int i = 0; i < DataDummy.daftarBandara.Count; i++)
-                {
-                    Bandara b = DataDummy.daftarBandara[i];
-                    if (b.ID != idSedangDiubah &&
-                        string.Equals(b.Nama.Trim(), nama, StringComparison.OrdinalIgnoreCase))
-                    {
-                        daftarError.Add("Nama bandara \"" + nama + "\" sudah dipakai bandara lain.");
-                        break;
-                    }
-                }
-            }
-
-            // Kode IATA harus unik (bandara lain saja)
-            if (kodeIata.Length == 3 && HanyaHuruf(kodeIata))
-            {
-                for (int i = 0; i < DataDummy.daftarBandara.Count; i++)
-                {
-                    Bandara b = DataDummy.daftarBandara[i];
-                    if (b.ID != idSedangDiubah && b.KodeIATA == kodeIata)
-                    {
-                        daftarError.Add("Kode IATA \"" + kodeIata + "\" sudah dipakai bandara lain.");
-                        break;
-                    }
-                }
-            }
-
-            // Kalau ada kesalahan, tampilkan semuanya lalu berhenti
-            if (daftarError.Count > 0)
-            {
-                MessageBox.Show(
-                    "Data belum bisa disimpan:\n\n- " + string.Join("\n- ", daftarError),
-                    "Master Bandara",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                MessageBox.Show("Alamat wajib diisi.", "Master Bandara",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtAlamat.Focus();
                 return;
             }
 
-            if (idSedangDiubah == 0)
-            {
-                // ===== Mode tambah =====
-                Bandara baru = new Bandara();
-                baru.ID = DataDummy.IdBerikutnyaBandara();
-                baru.Nama = nama;
-                baru.KodeIATA = kodeIata;
-                baru.Kota = kota;
-                baru.NegaraId = negaraDipilih.Id;
-                baru.JumlahTerminal = Convert.ToInt32(nudJumlahTerminal.Value);
-                baru.Alamat = alamat;
-                DataDummy.daftarBandara.Add(baru);
+            // Simpan dulu mode ubah atau tambah, sebelum idSedangDiubah direset
+            bool modeUbah = (idSedangDiubah != 0);
+            bool tersimpan = false;
 
-                MessageBox.Show("Bandara berhasil disimpan.", "Master Bandara",
+            try
+            {
+                using (Models.BandaraEntities db = new Models.BandaraEntities())
+                {
+                    // 2. Nama harus unik (kecuali data yang sedang diubah sendiri)
+                    bool namaDipakai = db.Bandara.Any(b =>
+                        b.ID != idSedangDiubah && b.Nama.ToLower() == nama.ToLower());
+
+                    if (namaDipakai)
+                    {
+                        MessageBox.Show("Nama bandara \"" + nama + "\" sudah dipakai bandara lain.",
+                            "Master Bandara", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtNama.Focus();
+                        return;
+                    }
+
+                    // 3. Kode IATA harus tepat 3 huruf (A-Z)
+                    if (kodeIata.Length != 3 || HanyaHuruf(kodeIata) == false)
+                    {
+                        MessageBox.Show("Kode IATA harus tepat 3 huruf (A-Z), tidak boleh angka atau simbol.",
+                            "Master Bandara", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtKodeIATA.Focus();
+                        return;
+                    }
+
+                    // 4. Kode IATA harus unik (kecuali data yang sedang diubah sendiri)
+                    bool kodeDipakai = db.Bandara.Any(b =>
+                        b.ID != idSedangDiubah && b.KodeIATA.ToLower() == kodeIata.ToLower());
+
+                    if (kodeDipakai)
+                    {
+                        MessageBox.Show("Kode IATA \"" + kodeIata + "\" sudah dipakai bandara lain.",
+                            "Master Bandara", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtKodeIATA.Focus();
+                        return;
+                    }
+
+                    // 5. Jumlah terminal minimal 1
+                    if (nudJumlahTerminal.Value < 1)
+                    {
+                        MessageBox.Show("Jumlah terminal minimal 1.", "Master Bandara",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        nudJumlahTerminal.Focus();
+                        return;
+                    }
+
+                    if (modeUbah == false)
+                    {
+                        // ===== Mode tambah =====
+                        Models.Bandara baru = new Models.Bandara();
+                        baru.Nama = nama;
+                        baru.KodeIATA = kodeIata;
+                        baru.Kota = kota;
+                        baru.NegaraID = negaraDipilih.ID;
+                        baru.JumlahTerminal = Convert.ToInt32(nudJumlahTerminal.Value);
+                        baru.Alamat = alamat;
+
+                        db.Bandara.Add(baru);
+                        // Kolom ID identity, jadi terisi otomatis oleh database
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        // ===== Mode ubah =====
+                        Models.Bandara bandara = db.Bandara.FirstOrDefault(b => b.ID == idSedangDiubah);
+                        if (bandara == null)
+                        {
+                            return;
+                        }
+
+                        bandara.Nama = nama;
+                        bandara.KodeIATA = kodeIata;
+                        bandara.Kota = kota;
+                        bandara.NegaraID = negaraDipilih.ID;
+                        bandara.JumlahTerminal = Convert.ToInt32(nudJumlahTerminal.Value);
+                        bandara.Alamat = alamat;
+
+                        db.SaveChanges();
+                    }
+
+                    tersimpan = true;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Tidak dapat terhubung ke database.", "Master Bandara",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (tersimpan == false)
+            {
+                return;
+            }
+
+            if (modeUbah)
+            {
+                MessageBox.Show("Perubahan bandara berhasil disimpan.", "Master Bandara",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                // ===== Mode ubah =====
-                Bandara bandara = CariBandara(idSedangDiubah);
-                if (bandara != null)
-                {
-                    bandara.Nama = nama;
-                    bandara.KodeIATA = kodeIata;
-                    bandara.Kota = kota;
-                    bandara.NegaraId = negaraDipilih.Id;
-                    bandara.JumlahTerminal = Convert.ToInt32(nudJumlahTerminal.Value);
-                    bandara.Alamat = alamat;
-                }
-
-                MessageBox.Show("Perubahan bandara berhasil disimpan.", "Master Bandara",
+                MessageBox.Show("Bandara berhasil disimpan.", "Master Bandara",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
@@ -403,48 +450,63 @@ namespace Bromo_Airlines
         // Menghapus bandara (dari tombol Hapus di grid)
         private void HapusBandara(int id)
         {
-            Bandara bandara = CariBandara(id);
-            if (bandara == null)
+            try
             {
+                using (Models.BandaraEntities db = new Models.BandaraEntities())
+                {
+                    Models.Bandara bandara = db.Bandara.FirstOrDefault(b => b.ID == id);
+                    if (bandara == null)
+                    {
+                        return;
+                    }
+
+                    // Konfirmasi dulu, menyebut nama bandara
+                    DialogResult jawab = MessageBox.Show(
+                        "Yakin ingin menghapus bandara \"" + bandara.Nama + "\"?",
+                        "Master Bandara",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+
+                    if (jawab != DialogResult.Yes)
+                    {
+                        return;
+                    }
+
+                    // Bandara tidak boleh dihapus kalau masih dipakai jadwal penerbangan
+                    Models.JadwalPenerbangan jadwalPemakai = db.JadwalPenerbangan
+                        .FirstOrDefault(j => j.BandaraKeberangkatanID == id || j.BandaraTujuanID == id);
+
+                    if (jadwalPemakai != null)
+                    {
+                        MessageBox.Show(
+                            "Bandara \"" + bandara.Nama + "\" tidak bisa dihapus karena masih dipakai " +
+                            "oleh jadwal penerbangan " + jadwalPemakai.KodePenerbangan + ".",
+                            "Master Bandara",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    db.Bandara.Remove(bandara);
+                    db.SaveChanges();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Tidak dapat terhubung ke database.", "Master Bandara",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Bandara tidak boleh dihapus kalau masih dipakai jadwal penerbangan
-            for (int i = 0; i < DataDummy.daftarJadwalPenerbangan.Count; i++)
+            // Segarkan grid; kalau yang dihapus sedang mode ubah, kembali ke mode tambah
+            MuatGrid();
+            if (idSedangDiubah == id)
             {
-                JadwalPenerbangan jadwal = DataDummy.daftarJadwalPenerbangan[i];
-                if (jadwal.BandaraAsalId == id || jadwal.BandaraTujuanId == id)
-                {
-                    MessageBox.Show(
-                        "Bandara \"" + bandara.Nama + "\" tidak bisa dihapus karena masih dipakai " +
-                        "oleh jadwal penerbangan " + jadwal.KodePenerbangan + ".",
-                        "Master Bandara",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                    return;
-                }
+                KosongkanInput();
             }
 
-            DialogResult jawab = MessageBox.Show(
-                "Yakin ingin menghapus bandara \"" + bandara.Nama + "\"?",
-                "Master Bandara",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (jawab == DialogResult.Yes)
-            {
-                DataDummy.daftarBandara.Remove(bandara);
-                MuatGrid();
-
-                // Kalau yang dihapus sedang dalam mode ubah, kembali ke mode tambah
-                if (idSedangDiubah == id)
-                {
-                    KosongkanInput();
-                }
-
-                MessageBox.Show("Bandara berhasil dihapus.", "Master Bandara",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            MessageBox.Show("Bandara berhasil dihapus.", "Master Bandara",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         // Tombol Batal: kosongkan semua input dan kembali ke mode tambah
@@ -462,6 +524,7 @@ namespace Bromo_Airlines
             txtKota.Text = "";
             txtAlamat.Text = "";
             nudJumlahTerminal.Value = 1;
+            btnSimpan.Text = "Simpan";
 
             // Negara kembali ke pilihan pertama
             if (cmbNegara.Items.Count > 0)
