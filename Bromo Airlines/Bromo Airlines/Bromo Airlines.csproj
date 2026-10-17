@@ -71,6 +71,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormListPenerbangan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormListPenerbangan.Designer.cs">
+      <DependentUpon>FormListPenerbangan.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMasterBandara.cs">
       <SubType>Form</SubType>
     </Compile>

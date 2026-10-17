@@ -662,6 +662,343 @@ namespace Bromo_Airlines
                 HargaPerTiket = 925000
             });
 
+            // ===== Jadwal dengan tanggal relatif (untuk form List Penerbangan) =====
+            // Tanggal dihitung dari hari ini supaya pencarian Customer
+            // selalu menemukan data kapan pun aplikasi dijalankan
+            // (validasi pencarian menolak tanggal sebelum hari ini).
+            // Semua tiba di hari yang sama (tidak lewat tengah malam).
+
+            DateTime besok = DateTime.Today.AddDays(1);
+            DateTime lusa = DateTime.Today.AddDays(2);
+
+            // Rute Juanda -> Soekarno-Hatta, hari besok
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "JT-0501",
+                BandaraAsalId = 8, // Juanda (SUB)
+                BandaraTujuanId = 14, // Soekarno-Hatta (CGK)
+                MaskapaiId = 8, // Lion Air
+                TanggalKeberangkatan = besok.AddHours(4).AddMinutes(30),
+                DurasiMenit = 85,
+                HargaPerTiket = 700000
+            });
+
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "IU-0333",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 14,
+                MaskapaiId = 10, // Super Air Jet
+                TanggalKeberangkatan = besok.AddHours(6),
+                DurasiMenit = 85,
+                HargaPerTiket = 725966
+            });
+
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "JT-0591",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 14,
+                MaskapaiId = 8, // Lion Air
+                TanggalKeberangkatan = besok.AddHours(6).AddMinutes(15),
+                DurasiMenit = 85,
+                HargaPerTiket = 726331
+            });
+
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "JT-0573",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 14,
+                MaskapaiId = 8,
+                TanggalKeberangkatan = besok.AddHours(7).AddMinutes(40),
+                DurasiMenit = 85,
+                HargaPerTiket = 726331
+            });
+
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "JT-0693",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 14,
+                MaskapaiId = 8,
+                TanggalKeberangkatan = besok.AddHours(7).AddMinutes(55),
+                DurasiMenit = 85,
+                HargaPerTiket = 726331
+            });
+
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "IU-0331",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 14,
+                MaskapaiId = 10,
+                TanggalKeberangkatan = besok.AddHours(8),
+                DurasiMenit = 85,
+                HargaPerTiket = 725966
+            });
+
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "JT-0697",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 14,
+                MaskapaiId = 8,
+                TanggalKeberangkatan = besok.AddHours(11).AddMinutes(20),
+                DurasiMenit = 85,
+                HargaPerTiket = 726331
+            });
+
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "IU-0343",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 14,
+                MaskapaiId = 10,
+                TanggalKeberangkatan = besok.AddHours(16),
+                DurasiMenit = 90,
+                HargaPerTiket = 725966
+            });
+
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "IU-0341",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 14,
+                MaskapaiId = 10,
+                TanggalKeberangkatan = besok.AddHours(17),
+                DurasiMenit = 90,
+                HargaPerTiket = 725966
+            });
+
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "IP-0203",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 14,
+                MaskapaiId = 11, // Pelita Air
+                TanggalKeberangkatan = besok.AddHours(19).AddMinutes(50),
+                DurasiMenit = 95,
+                HargaPerTiket = 685000
+            });
+
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "GA-0325",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 14,
+                MaskapaiId = 7, // Garuda Indonesia
+                TanggalKeberangkatan = besok.AddHours(21).AddMinutes(30),
+                DurasiMenit = 90,
+                HargaPerTiket = 1536880
+            });
+
+            // Rute Juanda -> Soekarno-Hatta, hari lusa
+            // (sama, cuma harga sedikit berbeda)
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "JT-0501",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 14,
+                MaskapaiId = 8,
+                TanggalKeberangkatan = lusa.AddHours(4).AddMinutes(30),
+                DurasiMenit = 85,
+                HargaPerTiket = 704500
+            });
+
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "IU-0333",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 14,
+                MaskapaiId = 10,
+                TanggalKeberangkatan = lusa.AddHours(6),
+                DurasiMenit = 85,
+                HargaPerTiket = 728966
+            });
+
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "JT-0591",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 14,
+                MaskapaiId = 8,
+                TanggalKeberangkatan = lusa.AddHours(6).AddMinutes(15),
+                DurasiMenit = 85,
+                HargaPerTiket = 729331
+            });
+
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "JT-0573",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 14,
+                MaskapaiId = 8,
+                TanggalKeberangkatan = lusa.AddHours(7).AddMinutes(40),
+                DurasiMenit = 85,
+                HargaPerTiket = 729331
+            });
+
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "JT-0693",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 14,
+                MaskapaiId = 8,
+                TanggalKeberangkatan = lusa.AddHours(7).AddMinutes(55),
+                DurasiMenit = 85,
+                HargaPerTiket = 729331
+            });
+
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "IU-0331",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 14,
+                MaskapaiId = 10,
+                TanggalKeberangkatan = lusa.AddHours(8),
+                DurasiMenit = 85,
+                HargaPerTiket = 728966
+            });
+
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "JT-0697",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 14,
+                MaskapaiId = 8,
+                TanggalKeberangkatan = lusa.AddHours(11).AddMinutes(20),
+                DurasiMenit = 85,
+                HargaPerTiket = 729331
+            });
+
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "IU-0343",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 14,
+                MaskapaiId = 10,
+                TanggalKeberangkatan = lusa.AddHours(16),
+                DurasiMenit = 90,
+                HargaPerTiket = 728966
+            });
+
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "IU-0341",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 14,
+                MaskapaiId = 10,
+                TanggalKeberangkatan = lusa.AddHours(17),
+                DurasiMenit = 90,
+                HargaPerTiket = 728966
+            });
+
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "IP-0203",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 14,
+                MaskapaiId = 11,
+                TanggalKeberangkatan = lusa.AddHours(19).AddMinutes(50),
+                DurasiMenit = 95,
+                HargaPerTiket = 689500
+            });
+
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "GA-0325",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 14,
+                MaskapaiId = 7,
+                TanggalKeberangkatan = lusa.AddHours(21).AddMinutes(30),
+                DurasiMenit = 90,
+                HargaPerTiket = 1540880
+            });
+
+            // Rute lain: Juanda -> Halim Perdanakusuma (besok dan lusa)
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "ID-7508",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 13, // Halim Perdanakusuma (HLP)
+                MaskapaiId = 4, // Batik Air
+                TanggalKeberangkatan = besok.AddHours(5),
+                DurasiMenit = 75,
+                HargaPerTiket = 745000
+            });
+
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "QG-0173",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 13,
+                MaskapaiId = 6, // Citilink
+                TanggalKeberangkatan = besok.AddHours(9),
+                DurasiMenit = 85,
+                HargaPerTiket = 772601
+            });
+
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "ID-7518",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 13,
+                MaskapaiId = 4,
+                TanggalKeberangkatan = besok.AddHours(19).AddMinutes(55),
+                DurasiMenit = 70,
+                HargaPerTiket = 829891
+            });
+
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "ID-7508",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 13,
+                MaskapaiId = 4,
+                TanggalKeberangkatan = lusa.AddHours(5),
+                DurasiMenit = 75,
+                HargaPerTiket = 748500
+            });
+
+            daftarJadwalPenerbangan.Add(new JadwalPenerbangan
+            {
+                Id = IdBerikutnyaJadwal(),
+                KodePenerbangan = "QG-0173",
+                BandaraAsalId = 8,
+                BandaraTujuanId = 13,
+                MaskapaiId = 6,
+                TanggalKeberangkatan = lusa.AddHours(9),
+                DurasiMenit = 85,
+                HargaPerTiket = 776601
+            });
+
             // ===== Status penerbangan =====
             // Nama status harus persis seperti ini.
 
