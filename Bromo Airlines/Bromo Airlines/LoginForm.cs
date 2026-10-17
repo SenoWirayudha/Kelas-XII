@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Bromo_Airlines
@@ -41,8 +42,33 @@ namespace Bromo_Airlines
                 return;
             }
 
-            // Cari akun di data dummy (List di memori)
-            Akun akunKetemu = DataDummy.CariAkun(username, password);
+            // Cari akun di database SQL Server lewat Entity Framework
+            Models.Akun akunKetemu = null;
+            try
+            {
+                using (Models.BandaraEntities db = new Models.BandaraEntities())
+                {
+                    // Ambil kandidat username dari tabel Akun.
+                    // Kolasi SQL Server default tidak peka huruf besar/kecil,
+                    // jadi username dan password dicek ulang di C# memakai
+                    // StringComparison.Ordinal (case-sensitive).
+                    Models.Akun kandidat = db.Akun.FirstOrDefault(a => a.Username == username);
+
+                    if (kandidat != null &&
+                        string.Equals(kandidat.Username, username, StringComparison.Ordinal) &&
+                        string.Equals(kandidat.Password, password, StringComparison.Ordinal))
+                    {
+                        akunKetemu = kandidat;
+                    }
+                }
+            }
+            catch
+            {
+                // Database tidak bisa diakses: jangan sampai aplikasi crash
+                MessageBox.Show("Tidak dapat terhubung ke database.", "Login",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             // Kalau tidak ketemu, berarti login gagal
             if (akunKetemu == null)
@@ -57,7 +83,9 @@ namespace Bromo_Airlines
             SesiLogin.username = akunKetemu.Username;
             SesiLogin.nama = akunKetemu.Nama;
             SesiLogin.merupakanAdmin = akunKetemu.MerupakanAdmin;
-            SesiLogin.akunSaatIni = akunKetemu;
+
+            // Kolom password dikosongkan setelah login berhasil
+            txtPassword.Text = "";
 
             // Buka form sesuai peran (Admin atau Customer)
             if (SesiLogin.merupakanAdmin == true)
