@@ -237,8 +237,8 @@ namespace Bromo_Airlines
             this.Close();
         }
 
-        // Tombol Beli Tiket per baris
-        // (Form Beli Tiket belum dibuat pada tahap ini)
+        // Tombol Beli Tiket per baris:
+        // buka FormBeliTiket, kirim Id jadwal dan jumlah penumpang pencarian
         private void dgvPenerbangan_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0)
@@ -249,11 +249,24 @@ namespace Bromo_Airlines
             if (e.ColumnIndex == dgvPenerbangan.Columns["kolomBeli"].Index)
             {
                 idJadwalDipilih = Convert.ToInt32(dgvPenerbangan.Rows[e.RowIndex].Tag);
-                MessageBox.Show(
-                    "Form Beli Tiket akan tersedia pada tahap berikutnya.",
-                    "Informasi",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+
+                // Sembunyikan form ini dulu, lalu buka FormBeliTiket
+                this.Hide();
+                FormBeliTiket formBeli = new FormBeliTiket(idJadwalDipilih, jumlahPenumpang);
+                DialogResult hasil = formBeli.ShowDialog();
+
+                if (hasil == DialogResult.OK)
+                {
+                    // Pembelian berhasil: form ini ikut tertutup,
+                    // alur kembali ke CustomerMainForm
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    // Kembali atau tombol X: tampilkan lagi form ini
+                    // dengan hasil pencarian dan filter yang masih sama
+                    this.Show();
+                }
             }
         }
 

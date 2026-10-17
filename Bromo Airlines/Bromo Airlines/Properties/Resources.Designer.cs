@@ -248,5 +248,40 @@ namespace Bromo_Airlines.Properties
             }
         }
 
+        /// <summary>
+        ///   Cari resource System.Drawing.Bitmap bertipe ic_kalender.
+        /// </summary>
+        internal static global::System.Drawing.Bitmap ic_kalender
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ic_kalender", resourceCulture);
+                return ((global::System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Cari resource System.Drawing.Bitmap bertipe ic_jam.
+        /// </summary>
+        internal static global::System.Drawing.Bitmap ic_jam
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ic_jam", resourceCulture);
+                return ((global::System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Cari resource System.Drawing.Bitmap bertipe ic_grup.
+        /// </summary>
+        internal static global::System.Drawing.Bitmap ic_grup
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ic_grup", resourceCulture);
+                return ((global::System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
