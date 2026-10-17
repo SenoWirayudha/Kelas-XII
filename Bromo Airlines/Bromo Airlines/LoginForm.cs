@@ -51,7 +51,7 @@ namespace Bromo_Airlines
             // Kalau tidak ketemu, berarti login gagal
             if (akunKetemu == null)
             {
-                MessageBox.Show("Username atau password salah", "Login Gagal",
+                MessageBox.Show("Username atau password salah.", "Login Gagal",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -61,6 +61,7 @@ namespace Bromo_Airlines
             SesiLogin.username = akunKetemu.Username;
             SesiLogin.nama = akunKetemu.Nama;
             SesiLogin.merupakanAdmin = akunKetemu.MerupakanAdmin;
+            SesiLogin.akunSaatIni = akunKetemu;
 
             // Buka form sesuai peran (Admin atau Customer)
             if (SesiLogin.merupakanAdmin == true)
@@ -83,6 +84,17 @@ namespace Bromo_Airlines
             DaftarAkunForm formDaftar = new DaftarAkunForm();
             this.Hide();
             formDaftar.Show();
+        }
+
+        // Kalau form login ditutup (tombol X), tutup seluruh aplikasi.
+        // Ini juga menutup form login lama yang masih tersembunyi
+        // setelah proses logout.
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Application.Exit();
+            }
         }
     }
 }

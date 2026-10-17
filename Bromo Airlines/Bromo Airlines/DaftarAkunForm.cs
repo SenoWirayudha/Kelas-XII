@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Bromo_Airlines
@@ -28,80 +29,70 @@ namespace Bromo_Airlines
             string password = txtPassword.Text;
             DateTime tanggalLahir = dtpTanggalLahir.Value;
 
-            // Validasi 1: semua kolom wajib diisi
+            // Validasi: semua kesalahan dikumpulkan dulu,
+            // lalu ditampilkan sekaligus dalam satu MessageBox.
+            List<string> kesalahan = new List<string>();
+
             if (username == "")
             {
-                MessageBox.Show("Username harus diisi", "Daftar Akun",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtUsername.Focus();
-                return;
+                kesalahan.Add("Username harus diisi.");
             }
 
             if (nama == "")
             {
-                MessageBox.Show("Nama harus diisi", "Daftar Akun",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtNama.Focus();
-                return;
+                kesalahan.Add("Nama harus diisi.");
             }
 
             if (telepon == "")
             {
-                MessageBox.Show("Nomor telepon harus diisi", "Daftar Akun",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtTelepon.Focus();
-                return;
+                kesalahan.Add("Nomor telepon harus diisi.");
             }
 
             if (password.Trim() == "")
             {
-                MessageBox.Show("Password harus diisi", "Daftar Akun",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtPassword.Focus();
-                return;
+                kesalahan.Add("Password harus diisi.");
             }
 
-            // Validasi 2: username harus unik (dicek ke data dummy)
-            if (DataDummy.UsernameSudahDipakai(username))
+            // Username harus unik (tidak peka huruf besar/kecil)
+            if (username != "" && DataDummy.UsernameSudahDipakai(username))
             {
-                MessageBox.Show("Username sudah dipakai, silakan pilih username lain",
-                    "Daftar Akun", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtUsername.Focus();
-                return;
+                kesalahan.Add("Username sudah digunakan, silakan pilih username lain.");
             }
 
-            // Validasi 3: nomor telepon harus angka saja, panjang 10 sampai 15 digit
-            bool teleponAngka = true;
-            for (int i = 0; i < telepon.Length; i++)
+            // Nomor telepon harus angka saja, panjang 10 sampai 15 digit
+            if (telepon != "")
             {
-                if (char.IsDigit(telepon[i]) == false)
+                bool teleponAngka = true;
+                for (int i = 0; i < telepon.Length; i++)
                 {
-                    teleponAngka = false;
+                    if (char.IsDigit(telepon[i]) == false)
+                    {
+                        teleponAngka = false;
+                    }
+                }
+
+                if (teleponAngka == false || telepon.Length < 10 || telepon.Length > 15)
+                {
+                    kesalahan.Add("Nomor telepon harus berupa angka saja dan panjangnya 10 sampai 15 digit.");
                 }
             }
 
-            if (teleponAngka == false || telepon.Length < 10 || telepon.Length > 15)
+            // Password minimal 8 karakter
+            if (password.Trim() != "" && password.Length < 8)
             {
-                MessageBox.Show("Nomor telepon harus berupa angka saja dan panjangnya 10 sampai 15 digit",
-                    "Daftar Akun", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtTelepon.Focus();
-                return;
+                kesalahan.Add("Password minimal 8 karakter.");
             }
 
-            // Validasi 4: password minimal 8 karakter
-            if (password.Length < 8)
+            // Tanggal lahir tidak boleh hari ini atau di masa depan
+            if (tanggalLahir.Date >= DateTime.Today)
             {
-                MessageBox.Show("Password minimal 8 karakter", "Daftar Akun",
+                kesalahan.Add("Tanggal lahir tidak boleh hari ini atau di masa depan.");
+            }
+
+            if (kesalahan.Count > 0)
+            {
+                MessageBox.Show(string.Join("\n", kesalahan.ToArray()), "Daftar Akun",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtPassword.Focus();
-                return;
-            }
-
-            // Validasi 5: tanggal lahir tidak boleh lebih dari hari ini
-            if (tanggalLahir.Date > DateTime.Today)
-            {
-                MessageBox.Show("Tanggal lahir tidak boleh lebih dari hari ini",
-                    "Daftar Akun", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -123,6 +114,7 @@ namespace Bromo_Airlines
             SesiLogin.username = akunBaru.Username;
             SesiLogin.nama = akunBaru.Nama;
             SesiLogin.merupakanAdmin = false;
+            SesiLogin.akunSaatIni = akunBaru;
 
             // Buka form Customer, lalu tutup form pendaftaran
             pendaftaranBerhasil = true;

@@ -237,6 +237,90 @@ namespace Bromo_Airlines.Properties
         }
 
         /// <summary>
+        ///   Cari resource System.Drawing.Bitmap bertipe logo_header.
+        /// </summary>
+        internal static global::System.Drawing.Bitmap logo_header
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("logo_header", resourceCulture);
+                return ((global::System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Cari resource System.Drawing.Bitmap bertipe ic_tiket.
+        /// </summary>
+        internal static global::System.Drawing.Bitmap ic_tiket
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ic_tiket", resourceCulture);
+                return ((global::System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Cari resource System.Drawing.Bitmap bertipe ic_logout_putih.
+        /// </summary>
+        internal static global::System.Drawing.Bitmap ic_logout_putih
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ic_logout_putih", resourceCulture);
+                return ((global::System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Cari resource System.Drawing.Bitmap bertipe ic_berangkat.
+        /// </summary>
+        internal static global::System.Drawing.Bitmap ic_berangkat
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ic_berangkat", resourceCulture);
+                return ((global::System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Cari resource System.Drawing.Bitmap bertipe ic_tujuan.
+        /// </summary>
+        internal static global::System.Drawing.Bitmap ic_tujuan
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ic_tujuan", resourceCulture);
+                return ((global::System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Cari resource System.Drawing.Bitmap bertipe ic_penumpang.
+        /// </summary>
+        internal static global::System.Drawing.Bitmap ic_penumpang
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ic_penumpang", resourceCulture);
+                return ((global::System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Cari resource System.Drawing.Bitmap bertipe gambar_mountain.
+        /// </summary>
+        internal static global::System.Drawing.Bitmap gambar_mountain
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("gambar_mountain", resourceCulture);
+                return ((global::System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
         ///   Cari resource System.Drawing.Bitmap bertipe ic_kembali.
         /// </summary>
         internal static global::System.Drawing.Bitmap ic_kembali
