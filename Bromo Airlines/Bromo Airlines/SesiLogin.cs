@@ -10,5 +10,9 @@ namespace Bromo_Airlines
         public static string username = "";
         public static string nama = "";
         public static bool merupakanAdmin = false;
+
+        // Akun yang sedang login, supaya form lain bisa membaca datanya
+        // (misalnya CustomerMainForm untuk sapaan).
+        public static Akun akunSaatIni = null;
     }
 }

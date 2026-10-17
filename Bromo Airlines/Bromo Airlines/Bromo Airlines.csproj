@@ -95,6 +95,12 @@
     <Compile Include="FormMasterMaskapai.Designer.cs">
       <DependentUpon>FormMasterMaskapai.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTiketSaya.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTiketSaya.Designer.cs">
+      <DependentUpon>FormTiketSaya.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormUbahStatus.cs">
       <SubType>Form</SubType>
     </Compile>

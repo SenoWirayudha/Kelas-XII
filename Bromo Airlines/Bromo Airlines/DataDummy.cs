@@ -37,6 +37,14 @@ namespace Bromo_Airlines
         public string Alamat { get; set; }
     }
 
+    // Class kecil untuk isi ComboBox bandara:
+    // tampilan "Nama, Kota (KODE)" dan nilai Id-nya.
+    class PilihanBandara
+    {
+        public int Id { get; set; }
+        public string Teks { get; set; }
+    }
+
     // Class untuk menyimpan satu data maskapai.
     // Memakai property supaya bisa dipakai ComboBox (DisplayMember/ValueMember).
     class Maskapai
@@ -92,6 +100,27 @@ namespace Bromo_Airlines
         public int JumlahTiket;
     }
 
+    // Class untuk menyimpan satu header transaksi pembelian tiket.
+    class TransaksiHeader
+    {
+        public int Id;
+        public int AkunId;
+        public DateTime TanggalTransaksi;
+        public int JadwalPenerbanganId;
+        public int JumlahPenumpang;
+        public int TotalHarga;
+        public int? KodePromoId; // null = tanpa promo
+    }
+
+    // Class untuk menyimpan satu data penumpang dalam satu transaksi.
+    class TransaksiDetail
+    {
+        public int Id;
+        public int TransaksiHeaderId;
+        public string TitelPenumpang;
+        public string NamaLengkapPenumpang;
+    }
+
     // Class untuk menyimpan satu kode promo.
     class KodePromo
     {
@@ -118,6 +147,8 @@ namespace Bromo_Airlines
         public static List<StatusPenerbangan> daftarStatusPenerbangan = new List<StatusPenerbangan>();
         public static List<Transaksi> daftarTransaksi = new List<Transaksi>();
         public static List<KodePromo> daftarKodePromo = new List<KodePromo>();
+        public static List<TransaksiHeader> daftarTransaksiHeader = new List<TransaksiHeader>();
+        public static List<TransaksiDetail> daftarTransaksiDetail = new List<TransaksiDetail>();
 
         // Isi data contoh, dijalankan sekali saat pertama kali dipakai
         static DataDummy()
@@ -142,9 +173,9 @@ namespace Bromo_Airlines
                 ID = 2,
                 Username = "user",
                 Password = "user1234",
-                Nama = "Budi Santoso",
-                TanggalLahir = new DateTime(1995, 5, 10),
-                NomorTelepon = "081298765432",
+                Nama = "Andi Taulany",
+                TanggalLahir = new DateTime(2003, 2, 1),
+                NomorTelepon = "08123456789",
                 MerupakanAdmin = false
             });
 
@@ -748,6 +779,100 @@ namespace Bromo_Airlines
                 BerlakuSampai = new DateTime(2027, 6, 30),
                 Deskripsi = "Gunakan kode ini dan hemat lebih banyak untuk perjalananmu."
             });
+
+            // ===== Transaksi dummy customer "user" (Andi Taulany, id 2) =====
+            // Jadwal IP-0203 besok (Juanda -> Soekarno-Hatta, berangkat 19:50).
+            // Tanggalnya relatif supaya selalu valid kapan pun aplikasi dijalankan.
+
+            JadwalPenerbangan jadwalIp = null;
+            for (int i = 0; i < daftarJadwalPenerbangan.Count; i++)
+            {
+                JadwalPenerbangan j = daftarJadwalPenerbangan[i];
+                if (j.KodePenerbangan == "IP-0203"
+                    && j.TanggalKeberangkatan.Date == DateTime.Today.AddDays(1))
+                {
+                    jadwalIp = j;
+                    break;
+                }
+            }
+
+            if (jadwalIp != null)
+            {
+                // Riwayat status: Delay 90 menit, hari ini pukul 08:30:15.
+                // Kalau jadwal ini sudah punya riwayat dari data dummy
+                // sebelumnya, jangan dibuat ganda.
+                bool sudahAdaRiwayat = false;
+                for (int i = 0; i < daftarPerubahanStatus.Count; i++)
+                {
+                    if (daftarPerubahanStatus[i].JadwalPenerbanganId == jadwalIp.Id)
+                    {
+                        sudahAdaRiwayat = true;
+                        break;
+                    }
+                }
+
+                if (sudahAdaRiwayat == false)
+                {
+                    daftarPerubahanStatus.Add(new PerubahanStatusJadwal
+                    {
+                        Id = IdBerikutnyaPerubahanStatus(),
+                        JadwalPenerbanganId = jadwalIp.Id,
+                        StatusPenerbanganId = 2, // Delay
+                        WaktuPerubahanTerjadi = DateTime.Today
+                            .AddHours(8).AddMinutes(30).AddSeconds(15),
+                        PerkiraanDelayMenit = 90
+                    });
+                }
+
+                // Transaksi aktif: 1 penumpang, tanpa promo
+                TransaksiHeader headerIp = new TransaksiHeader();
+                headerIp.Id = IdBerikutnyaTransaksiHeader();
+                headerIp.AkunId = 2; // user (Andi Taulany)
+                headerIp.TanggalTransaksi = DateTime.Now;
+                headerIp.JadwalPenerbanganId = jadwalIp.Id;
+                headerIp.JumlahPenumpang = 1;
+                headerIp.TotalHarga = jadwalIp.HargaPerTiket;
+                headerIp.KodePromoId = null;
+                daftarTransaksiHeader.Add(headerIp);
+
+                TransaksiDetail detailIp = new TransaksiDetail();
+                detailIp.Id = IdBerikutnyaTransaksiDetail();
+                detailIp.TransaksiHeaderId = headerIp.Id;
+                detailIp.TitelPenumpang = "Mr";
+                detailIp.NamaLengkapPenumpang = "Andi Taulany";
+                daftarTransaksiDetail.Add(detailIp);
+            }
+
+            // Transaksi kedua: penerbangan yang SUDAH lewat (kemarin),
+            // supaya terlihat bahwa tiket yang sudah berangkat
+            // tidak muncul di daftar Tiket Saya.
+            JadwalPenerbangan jadwalKemarin = new JadwalPenerbangan();
+            jadwalKemarin.Id = IdBerikutnyaJadwal();
+            jadwalKemarin.KodePenerbangan = "JT-0707";
+            jadwalKemarin.BandaraAsalId = 8; // Juanda (SUB)
+            jadwalKemarin.BandaraTujuanId = 14; // Soekarno-Hatta (CGK)
+            jadwalKemarin.MaskapaiId = 8; // Lion Air
+            jadwalKemarin.TanggalKeberangkatan = DateTime.Today.AddDays(-1).AddHours(8);
+            jadwalKemarin.DurasiMenit = 85; // tiba 09:25, tidak lewat tengah malam
+            jadwalKemarin.HargaPerTiket = 700000;
+            daftarJadwalPenerbangan.Add(jadwalKemarin);
+
+            TransaksiHeader headerKemarin = new TransaksiHeader();
+            headerKemarin.Id = IdBerikutnyaTransaksiHeader();
+            headerKemarin.AkunId = 2; // user (Andi Taulany)
+            headerKemarin.TanggalTransaksi = DateTime.Now.AddDays(-1);
+            headerKemarin.JadwalPenerbanganId = jadwalKemarin.Id;
+            headerKemarin.JumlahPenumpang = 1;
+            headerKemarin.TotalHarga = jadwalKemarin.HargaPerTiket;
+            headerKemarin.KodePromoId = null;
+            daftarTransaksiHeader.Add(headerKemarin);
+
+            TransaksiDetail detailKemarin = new TransaksiDetail();
+            detailKemarin.Id = IdBerikutnyaTransaksiDetail();
+            detailKemarin.TransaksiHeaderId = headerKemarin.Id;
+            detailKemarin.TitelPenumpang = "Mr";
+            detailKemarin.NamaLengkapPenumpang = "Andi Taulany";
+            daftarTransaksiDetail.Add(detailKemarin);
         }
 
         // Membuat ID baru untuk akun supaya tidak bertabrakan
@@ -834,13 +959,103 @@ namespace Bromo_Airlines
             return idTerbesar + 1;
         }
 
+        // Membuat ID baru untuk header transaksi
+        public static int IdBerikutnyaTransaksiHeader()
+        {
+            int idTerbesar = 0;
+            for (int i = 0; i < daftarTransaksiHeader.Count; i++)
+            {
+                if (daftarTransaksiHeader[i].Id > idTerbesar)
+                {
+                    idTerbesar = daftarTransaksiHeader[i].Id;
+                }
+            }
+            return idTerbesar + 1;
+        }
+
+        // Membuat ID baru untuk detail transaksi
+        public static int IdBerikutnyaTransaksiDetail()
+        {
+            int idTerbesar = 0;
+            for (int i = 0; i < daftarTransaksiDetail.Count; i++)
+            {
+                if (daftarTransaksiDetail[i].Id > idTerbesar)
+                {
+                    idTerbesar = daftarTransaksiDetail[i].Id;
+                }
+            }
+            return idTerbesar + 1;
+        }
+
+        // Mencari riwayat perubahan status milik sebuah jadwal
+        // yang waktunya paling baru. Kalau tidak ada = null.
+        // Dipakai bersama oleh FormUbahStatus dan FormTiketSaya.
+        public static PerubahanStatusJadwal CariPerubahanStatusTerakhir(int jadwalId)
+        {
+            PerubahanStatusJadwal hasil = null;
+            for (int i = 0; i < daftarPerubahanStatus.Count; i++)
+            {
+                PerubahanStatusJadwal riwayat = daftarPerubahanStatus[i];
+                if (riwayat.JadwalPenerbanganId == jadwalId)
+                {
+                    if (hasil == null ||
+                        riwayat.WaktuPerubahanTerjadi > hasil.WaktuPerubahanTerjadi)
+                    {
+                        hasil = riwayat;
+                    }
+                }
+            }
+            return hasil;
+        }
+
+        // Mencari nama status berdasarkan ID. Kalau tidak ketemu = "-"
+        public static string NamaStatus(int id)
+        {
+            for (int i = 0; i < daftarStatusPenerbangan.Count; i++)
+            {
+                if (daftarStatusPenerbangan[i].Id == id)
+                {
+                    return daftarStatusPenerbangan[i].Nama;
+                }
+            }
+            return "-";
+        }
+
+        // Mengubah jumlah menit menjadi teks "XX jam YY menit" (dua digit)
+        public static string FormatDurasi(int totalMenit)
+        {
+            int jam = totalMenit / 60;
+            int menit = totalMenit % 60;
+            return string.Format("{0:00} jam {1:00} menit", jam, menit);
+        }
+
+        // Teks status terakhir untuk ditampilkan di grid.
+        // Belum ada riwayat = "Sesuai Jadwal". Delay ditulis lengkap dengan durasinya.
+        public static string TeksStatusTerakhir(int jadwalId)
+        {
+            PerubahanStatusJadwal terakhir = CariPerubahanStatusTerakhir(jadwalId);
+            if (terakhir == null)
+            {
+                return "Sesuai Jadwal";
+            }
+
+            string nama = NamaStatus(terakhir.StatusPenerbanganId);
+            if (nama == "Delay")
+            {
+                return "Delay (selama \u00b1" + FormatDurasi(terakhir.PerkiraanDelayMenit) + ")";
+            }
+            return nama;
+        }
+
         // Mencari akun berdasarkan username dan password.
+        // Username tidak peka huruf besar/kecil, password peka.
         // Kalau tidak ketemu, hasilnya null.
         public static Akun CariAkun(string username, string password)
         {
             for (int i = 0; i < daftarAkun.Count; i++)
             {
-                if (daftarAkun[i].Username == username && daftarAkun[i].Password == password)
+                if (daftarAkun[i].Username.ToLower() == username.ToLower()
+                    && daftarAkun[i].Password == password)
                 {
                     return daftarAkun[i];
                 }
@@ -849,11 +1064,12 @@ namespace Bromo_Airlines
         }
 
         // Mengecek apakah username sudah dipakai akun lain
+        // (tidak peka huruf besar/kecil)
         public static bool UsernameSudahDipakai(string username)
         {
             for (int i = 0; i < daftarAkun.Count; i++)
             {
-                if (daftarAkun[i].Username == username)
+                if (daftarAkun[i].Username.ToLower() == username.ToLower())
                 {
                     return true;
                 }

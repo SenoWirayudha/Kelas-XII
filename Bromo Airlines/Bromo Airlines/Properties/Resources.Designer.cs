@@ -235,5 +235,18 @@ namespace Bromo_Airlines.Properties
                 return ((global::System.Drawing.Bitmap)(obj));
             }
         }
+
+        /// <summary>
+        ///   Cari resource System.Drawing.Bitmap bertipe ic_kembali.
+        /// </summary>
+        internal static global::System.Drawing.Bitmap ic_kembali
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ic_kembali", resourceCulture);
+                return ((global::System.Drawing.Bitmap)(obj));
+            }
+        }
+
     }
 }

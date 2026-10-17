@@ -60,8 +60,8 @@ namespace Bromo_Airlines
                     NamaBandara(jadwal.BandaraTujuanId),
                     jadwal.TanggalKeberangkatan.ToString("dd-MM-yyyy"),
                     jadwal.TanggalKeberangkatan.ToString("HH:mm"),
-                    FormatDurasi(jadwal.DurasiMenit),
-                    TeksStatusTerakhir(jadwal.Id),
+                    DataDummy.FormatDurasi(jadwal.DurasiMenit),
+                    DataDummy.TeksStatusTerakhir(jadwal.Id),
                     TeksTerakhirDiubah(jadwal.Id));
 
                 // Simpan ID jadwal di baris, supaya tahu baris mana yang diklik
@@ -95,27 +95,6 @@ namespace Bromo_Airlines
             return "-";
         }
 
-        // Mencari nama status berdasarkan ID. Kalau tidak ketemu = "-"
-        private string NamaStatus(int id)
-        {
-            for (int i = 0; i < DataDummy.daftarStatusPenerbangan.Count; i++)
-            {
-                if (DataDummy.daftarStatusPenerbangan[i].Id == id)
-                {
-                    return DataDummy.daftarStatusPenerbangan[i].Nama;
-                }
-            }
-            return "-";
-        }
-
-        // Mengubah jumlah menit menjadi teks "XX jam YY menit" (dua digit)
-        private string FormatDurasi(int totalMenit)
-        {
-            int jam = totalMenit / 60;
-            int menit = totalMenit % 60;
-            return string.Format("{0:00} jam {1:00} menit", jam, menit);
-        }
-
         // Mencari data jadwal berdasarkan ID. Kalau tidak ketemu = null.
         private JadwalPenerbangan CariJadwal(int id)
         {
@@ -129,49 +108,11 @@ namespace Bromo_Airlines
             return null;
         }
 
-        // Mencari riwayat perubahan status milik sebuah jadwal
-        // yang waktunya paling baru. Kalau tidak ada = null.
-        private PerubahanStatusJadwal CariPerubahanStatusTerakhir(int jadwalId)
-        {
-            PerubahanStatusJadwal hasil = null;
-            for (int i = 0; i < DataDummy.daftarPerubahanStatus.Count; i++)
-            {
-                PerubahanStatusJadwal riwayat = DataDummy.daftarPerubahanStatus[i];
-                if (riwayat.JadwalPenerbanganId == jadwalId)
-                {
-                    if (hasil == null ||
-                        riwayat.WaktuPerubahanTerjadi > hasil.WaktuPerubahanTerjadi)
-                    {
-                        hasil = riwayat;
-                    }
-                }
-            }
-            return hasil;
-        }
-
-        // Teks status terakhir untuk ditampilkan di grid.
-        // Belum ada riwayat = "Sesuai Jadwal". Delay ditulis lengkap dengan durasinya.
-        private string TeksStatusTerakhir(int jadwalId)
-        {
-            PerubahanStatusJadwal terakhir = CariPerubahanStatusTerakhir(jadwalId);
-            if (terakhir == null)
-            {
-                return "Sesuai Jadwal";
-            }
-
-            string nama = NamaStatus(terakhir.StatusPenerbanganId);
-            if (nama == "Delay")
-            {
-                return "Delay (selama ±" + FormatDurasi(terakhir.PerkiraanDelayMenit) + ")";
-            }
-            return nama;
-        }
-
         // Teks waktu perubahan terakhir untuk ditampilkan di grid.
         // Belum ada riwayat = "-".
         private string TeksTerakhirDiubah(int jadwalId)
         {
-            PerubahanStatusJadwal terakhir = CariPerubahanStatusTerakhir(jadwalId);
+            PerubahanStatusJadwal terakhir = DataDummy.CariPerubahanStatusTerakhir(jadwalId);
             if (terakhir == null)
             {
                 return "-";
@@ -209,7 +150,7 @@ namespace Bromo_Airlines
 
             // Pilih status terakhir jadwal ini di ComboBox
             // (jadwal tanpa riwayat = Sesuai Jadwal)
-            PerubahanStatusJadwal terakhir = CariPerubahanStatusTerakhir(id);
+            PerubahanStatusJadwal terakhir = DataDummy.CariPerubahanStatusTerakhir(id);
             int statusId = 1; // Sesuai Jadwal
             int delayMenit = 0;
             if (terakhir != null)
@@ -220,11 +161,11 @@ namespace Bromo_Airlines
             cmbStatus.SelectedValue = statusId;
 
             // Kalau statusnya Delay, tampilkan juga input durasi delay
-            if (NamaStatus(statusId) == "Delay")
+            if (DataDummy.NamaStatus(statusId) == "Delay")
             {
                 lblDelay.Visible = true;
                 mtbDelay.Visible = true;
-                mtbDelay.Text = FormatDurasi(delayMenit);
+                mtbDelay.Text = DataDummy.FormatDurasi(delayMenit);
             }
             else
             {
@@ -354,7 +295,7 @@ namespace Bromo_Airlines
             {
                 int statusTerakhirId = 1;
                 int delayTerakhirMenit = 0;
-                PerubahanStatusJadwal terakhir = CariPerubahanStatusTerakhir(idJadwalDipilih);
+                PerubahanStatusJadwal terakhir = DataDummy.CariPerubahanStatusTerakhir(idJadwalDipilih);
                 if (terakhir != null)
                 {
                     statusTerakhirId = terakhir.StatusPenerbanganId;
