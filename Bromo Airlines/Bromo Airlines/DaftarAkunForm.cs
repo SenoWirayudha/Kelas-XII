@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Bromo_Airlines
@@ -25,98 +25,153 @@ namespace Bromo_Airlines
             string password = txtPassword.Text;
             DateTime tanggalLahir = dtpTanggalLahir.Value;
 
-            // Validasi: semua kesalahan dikumpulkan dulu,
-            // lalu ditampilkan sekaligus dalam satu MessageBox.
-            List<string> kesalahan = new List<string>();
+            // Validasi dicek berurutan.
+            // Berhenti di error pertama dan tampilkan satu pesan saja.
 
+            // 1. Semua field wajib diisi
             if (username == "")
             {
-                kesalahan.Add("Username harus diisi.");
+                MessageBox.Show("Username harus diisi.", "Daftar Akun",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUsername.Focus();
+                return;
             }
 
             if (nama == "")
             {
-                kesalahan.Add("Nama harus diisi.");
+                MessageBox.Show("Nama harus diisi.", "Daftar Akun",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNama.Focus();
+                return;
             }
 
             if (telepon == "")
             {
-                kesalahan.Add("Nomor telepon harus diisi.");
+                MessageBox.Show("Nomor telepon harus diisi.", "Daftar Akun",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTelepon.Focus();
+                return;
             }
 
             if (password.Trim() == "")
             {
-                kesalahan.Add("Password harus diisi.");
-            }
-
-            // Username harus unik (tidak peka huruf besar/kecil)
-            if (username != "" && DataDummy.UsernameSudahDipakai(username))
-            {
-                kesalahan.Add("Username sudah digunakan, silakan pilih username lain.");
-            }
-
-            // Nomor telepon harus angka saja, panjang 10 sampai 15 digit
-            if (telepon != "")
-            {
-                bool teleponAngka = true;
-                for (int i = 0; i < telepon.Length; i++)
-                {
-                    if (char.IsDigit(telepon[i]) == false)
-                    {
-                        teleponAngka = false;
-                    }
-                }
-
-                if (teleponAngka == false || telepon.Length < 10 || telepon.Length > 15)
-                {
-                    kesalahan.Add("Nomor telepon harus berupa angka saja dan panjangnya 10 sampai 15 digit.");
-                }
-            }
-
-            // Password minimal 8 karakter
-            if (password.Trim() != "" && password.Length < 8)
-            {
-                kesalahan.Add("Password minimal 8 karakter.");
-            }
-
-            // Tanggal lahir tidak boleh hari ini atau di masa depan
-            if (tanggalLahir.Date >= DateTime.Today)
-            {
-                kesalahan.Add("Tanggal lahir tidak boleh hari ini atau di masa depan.");
-            }
-
-            if (kesalahan.Count > 0)
-            {
-                MessageBox.Show(string.Join("\n", kesalahan.ToArray()), "Daftar Akun",
+                MessageBox.Show("Password harus diisi.", "Daftar Akun",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPassword.Focus();
                 return;
             }
 
-            // Semua validasi lolos -> simpan akun baru ke data dummy
-            Akun akunBaru = new Akun();
-            akunBaru.ID = DataDummy.IdBerikutnya();
-            akunBaru.Username = username;
-            akunBaru.Password = password;
-            akunBaru.Nama = nama;
-            akunBaru.TanggalLahir = tanggalLahir.Date;
-            akunBaru.NomorTelepon = telepon;
-            // Pendaftaran dari form ini selalu customer (bukan admin)
-            akunBaru.MerupakanAdmin = false;
+            // 2. Username harus unik di tabel Akun (tidak peka huruf besar/kecil)
+            bool usernameSudahDipakai = false;
+            try
+            {
+                using (Models.BandaraEntities db = new Models.BandaraEntities())
+                {
+                    usernameSudahDipakai = db.Akun
+                        .Any(a => a.Username.ToLower() == username.ToLower());
+                }
+            }
+            catch
+            {
+                // Database tidak bisa diakses: jangan sampai aplikasi crash
+                MessageBox.Show("Tidak dapat terhubung ke database.", "Daftar Akun",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            DataDummy.TambahAkun(akunBaru);
+            if (usernameSudahDipakai)
+            {
+                MessageBox.Show("Username sudah dipakai, silakan pilih username lain.",
+                    "Daftar Akun", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUsername.Focus();
+                return;
+            }
 
-            // Simpan akun ke SesiLogin
+            // 3. Nomor telepon harus angka saja, panjang 10 sampai 15 digit
+            bool teleponAngka = true;
+            for (int i = 0; i < telepon.Length; i++)
+            {
+                if (char.IsDigit(telepon[i]) == false)
+                {
+                    teleponAngka = false;
+                }
+            }
+
+            if (teleponAngka == false || telepon.Length < 10 || telepon.Length > 15)
+            {
+                MessageBox.Show("Nomor telepon harus angka saja dan panjangnya 10 sampai 15 digit.",
+                    "Daftar Akun", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTelepon.Focus();
+                return;
+            }
+
+            // 4. Password minimal 8 karakter
+            if (password.Length < 8)
+            {
+                MessageBox.Show("Password minimal 8 karakter.", "Daftar Akun",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPassword.Focus();
+                return;
+            }
+
+            // 5. Tanggal lahir tidak boleh hari ini atau di masa depan
+            if (tanggalLahir.Date >= DateTime.Today)
+            {
+                MessageBox.Show("Tanggal lahir tidak boleh hari ini atau di masa depan.",
+                    "Daftar Akun", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dtpTanggalLahir.Focus();
+                return;
+            }
+
+            // Semua validasi lolos -> simpan akun baru ke database
+            Models.Akun akunBaru = null;
+            try
+            {
+                using (Models.BandaraEntities db = new Models.BandaraEntities())
+                {
+                    akunBaru = new Models.Akun();
+                    akunBaru.Username = username;
+                    akunBaru.Password = password;
+                    akunBaru.Nama = nama;
+                    akunBaru.TanggalLahir = tanggalLahir.Date;
+                    akunBaru.NomorTelepon = telepon;
+                    // Pendaftaran dari form ini selalu customer (bukan admin)
+                    akunBaru.MerupakanAdmin = false;
+
+                    db.Akun.Add(akunBaru);
+                    // Kolom ID identity, jadi terisi otomatis oleh database
+                    db.SaveChanges();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Tidak dapat terhubung ke database.", "Daftar Akun",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Simpan akun ke SesiLogin, sama seperti setelah login
             SesiLogin.idAkun = akunBaru.ID;
             SesiLogin.username = akunBaru.Username;
             SesiLogin.nama = akunBaru.Nama;
             SesiLogin.merupakanAdmin = false;
-            SesiLogin.akunSaatIni = akunBaru;
 
-            // Buka form Customer, lalu tutup form pendaftaran
+            // Kosongkan input, buka form Customer, lalu tutup form pendaftaran
+            KosongkanInput();
             pendaftaranBerhasil = true;
             CustomerMainForm formCustomer = new CustomerMainForm();
             formCustomer.Show();
             this.Close();
+        }
+
+        // Kosongkan semua kolom input
+        private void KosongkanInput()
+        {
+            txtUsername.Text = "";
+            txtNama.Text = "";
+            txtTelepon.Text = "";
+            txtPassword.Text = "";
+            dtpTanggalLahir.Value = DateTime.Today;
         }
 
         // Ketika link "Login" diklik, tutup form ini.
